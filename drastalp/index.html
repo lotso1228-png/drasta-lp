@@ -11,11 +11,12 @@
 <link rel="icon" href="assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <noscript><style>.reveal{opacity:1 !important;transform:none !important}</style></noscript>
 </head>
 <body>
+<div class="scroll-prog" id="scrollProg" aria-hidden="true"></div>
 <div class="dwrap">
 <header class="hdr" id="hdr">
   <div class="hdrin">
@@ -34,46 +35,61 @@
 
 <main>
 <section class="hero" id="top">
+  <div class="hero-bg" aria-hidden="true">
+    <span class="orb o1"></span><span class="orb o2"></span><span class="orb o3"></span>
+    <span class="grid-glow"></span>
+  </div>
   <div class="hero-in">
     <div class="hero-copy">
-      <p class="eyebrow">教習所に縛られない。</p>
+      <p class="eyebrow"><span class="spark">✦</span>教習所に縛られない。</p>
       <h1 class="h1">あなたのペースで<br><span class="em">免許取得</span><span class="dot">。</span></h1>
       <p class="lead">LINE予約でラクラク教習。<br>最短ルートで普通AT免許取得をサポート。</p>
+      <div class="hero-tags" aria-hidden="true">
+        <span class="tag">#最短卒業</span>
+        <span class="tag">#分割払いOK</span>
+        <span class="tag">#無料送迎</span>
+      </div>
       <a class="cta-lg" href="#cta">
         <span class="row1"><span class="linechip">LINE</span>LINEで無料相談する</span>
         <span class="sub">24時間受付中 / かんたん1分で完了！</span>
         <span class="arw">›</span>
       </a>
     </div>
-    <div class="hero-media">
-      <img class="hero-blob b1" src="assets/asset_003.png" alt="" aria-hidden="true">
-      <img class="hero-blob b2" src="assets/asset_005.png" alt="" aria-hidden="true">
-      <img class="hero-blob b3" src="assets/asset_026.png" alt="" aria-hidden="true">
+    <div class="hero-media" id="heroMedia">
+      <img class="hero-blob b1 floaty" src="assets/asset_003.png" alt="" aria-hidden="true">
+      <img class="hero-blob b2 floaty slow" src="assets/asset_005.png" alt="" aria-hidden="true">
+      <img class="hero-blob b3 floaty fast" src="assets/asset_026.png" alt="" aria-hidden="true">
       <div class="hero-photo"><img src="assets/asset_084.png" alt="車内で笑顔のカップル"></div>
+    </div>
+  </div>
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>LINEで予約完結</span><span class="mdot">●</span><span>最短ルート</span><span class="mdot">●</span><span>分割払いOK</span><span class="mdot">●</span><span>駅から無料送迎</span><span class="mdot">●</span><span>学科試験対策</span><span class="mdot">●</span>
+      <span>LINEで予約完結</span><span class="mdot">●</span><span>最短ルート</span><span class="mdot">●</span><span>分割払いOK</span><span class="mdot">●</span><span>駅から無料送迎</span><span class="mdot">●</span><span>学科試験対策</span><span class="mdot">●</span>
     </div>
   </div>
 </section>
 
-<section class="sec reveal" id="reasons">
+<section class="sec reveal stagger" id="reasons">
   <h2 class="sttl"><span>ドラスタが選ばれる理由</span></h2>
   <div class="rgrid">
-    <div class="rcard"><img src="assets/asset_056.png" alt=""><p>LINEだけで<br>予約・連絡が完結</p></div>
-    <div class="rcard"><img src="assets/asset_047.png" alt=""><p>最短ルートで<br>スピード取得</p></div>
-    <div class="rcard"><img src="assets/asset_046.png" alt=""><p>自分の都合に<br>合わせて通える</p></div>
-    <div class="rcard"><img src="assets/asset_058.png" alt=""><p>分割払いOKで<br>負担を軽減</p></div>
-    <div class="rcard"><img src="assets/asset_048.png" alt=""><p>駅から無料送迎で<br>通いやすい</p></div>
-    <div class="rcard"><img src="assets/asset_060.png" alt=""><p>学科試験対策で<br>しっかりサポート</p></div>
+    <div class="rcard tilt"><span class="rico"><img src="assets/asset_056.png" alt=""></span><p>LINEだけで<br>予約・連絡が完結</p></div>
+    <div class="rcard tilt"><span class="rico"><img src="assets/asset_047.png" alt=""></span><p>最短ルートで<br>スピード取得</p></div>
+    <div class="rcard tilt"><span class="rico"><img src="assets/asset_046.png" alt=""></span><p>自分の都合に<br>合わせて通える</p></div>
+    <div class="rcard tilt"><span class="rico"><img src="assets/asset_058.png" alt=""></span><p>分割払いOKで<br>負担を軽減</p></div>
+    <div class="rcard tilt"><span class="rico"><img src="assets/asset_048.png" alt=""></span><p>駅から無料送迎で<br>通いやすい</p></div>
+    <div class="rcard tilt"><span class="rico"><img src="assets/asset_060.png" alt=""></span><p>学科試験対策で<br>しっかりサポート</p></div>
   </div>
 </section>
 
 <section class="psec">
-  <div class="sec reveal" id="price">
+  <div class="sec reveal stagger" id="price">
     <h2 class="sttl"><span>コース・料金</span></h2>
     <div class="pgrid">
       <div class="pcard">
         <span class="pbadge">基本からしっかり学ぶ方に</span>
         <div class="pname">普通コース</div>
-        <div class="price"><span class="num">231,000</span><span class="yen">円</span><span class="tax">（税込）</span></div>
+        <div class="price"><span class="num" data-count="231000">231,000</span><span class="yen">円</span><span class="tax">（税込）</span></div>
         <ul class="pfeat">
           <li>仮免許 15時間 ＋ 本免許 10時間</li>
           <li>最短10時間で卒業可能</li>
@@ -83,8 +99,9 @@
       </div>
       <div class="pcard exp">
         <span class="pbadge">運転経験がある方におすすめ</span>
+        <span class="ptag">人気</span>
         <div class="pname">経験者コース</div>
-        <div class="price"><span class="num">165,000</span><span class="yen">円</span><span class="tax">（税込）</span></div>
+        <div class="price"><span class="num" data-count="165000">165,000</span><span class="yen">円</span><span class="tax">（税込）</span></div>
         <ul class="pfeat">
           <li>仮免許 5時間 ＋ 本免許 10時間</li>
           <li>最短10時間で卒業可能</li>
@@ -97,7 +114,7 @@
   </div>
 </section>
 
-<section class="sec reveal" id="flow">
+<section class="sec reveal stagger" id="flow">
   <h2 class="sttl"><span>免許取得までの流れ</span></h2>
   <div class="frow">
     <div class="fstep">
@@ -146,7 +163,7 @@
 </section>
 
 <section class="esec">
-  <div class="sec reveal" id="env">
+  <div class="sec reveal stagger" id="env">
     <h2 class="sttl"><span>通いやすく、続けやすい環境</span></h2>
     <div class="egrid">
       <div class="ecard">
@@ -214,18 +231,18 @@
 </section>
 
 <section class="fcta" id="cta">
-  <img class="hero-blob b1" src="assets/asset_002.png" alt="" aria-hidden="true">
+  <img class="hero-blob b1 floaty" src="assets/asset_002.png" alt="" aria-hidden="true">
   <div class="fcta-in">
-    <img class="fillu" src="assets/asset_083.png" alt="" aria-hidden="true">
+    <img class="fillu floaty slow" src="assets/asset_083.png" alt="" aria-hidden="true">
     <div class="stack">
       <h2>まずはLINEでお気軽にご相談ください！</h2>
-      <a class="cta-lg" href="#">
+      <a class="cta-lg pulse" href="#">
         <span class="row1"><span class="linechip">LINE</span>LINEで無料相談する</span>
         <span class="sub">24時間受付中 / かんたん1分で完了！</span>
         <span class="arw">›</span>
       </a>
     </div>
-    <img class="fcar" src="assets/asset_089.png" alt="" aria-hidden="true">
+    <img class="fcar floaty fast" src="assets/asset_089.png" alt="" aria-hidden="true">
   </div>
 </section>
 </main>
@@ -243,6 +260,11 @@
   </div>
 </footer>
 </div>
+
+<a class="float-cta" href="#cta" aria-label="LINEで無料相談する">
+  <span class="linechip">LINE</span><span class="ftxt">無料相談</span>
+</a>
+
 <script src="main.js"></script>
 </body>
 </html>
