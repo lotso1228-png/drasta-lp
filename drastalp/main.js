@@ -100,6 +100,34 @@
     });
   }
 
+  // ---- Mobile hamburger menu ----
+  var navToggle = document.getElementById('navToggle');
+  var mobileMenu = document.getElementById('mobileMenu');
+  if (navToggle && mobileMenu) {
+    function setMenu(open) {
+      navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      navToggle.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
+      mobileMenu.classList.toggle('open', open);
+      if (open) { mobileMenu.hidden = false; }
+      else { mobileMenu.hidden = true; }
+    }
+    navToggle.addEventListener('click', function () {
+      setMenu(navToggle.getAttribute('aria-expanded') !== 'true');
+    });
+    // Close on link tap, on Escape, and when leaving mobile width
+    mobileMenu.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () { setMenu(false); });
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && navToggle.getAttribute('aria-expanded') === 'true') {
+        setMenu(false); navToggle.focus();
+      }
+    });
+    window.addEventListener('resize', function () {
+      if (window.innerWidth > 980 && navToggle.getAttribute('aria-expanded') === 'true') setMenu(false);
+    }, { passive: true });
+  }
+
   // ---- FAQ accordion: keep only one open at a time ----
   var faqs = document.querySelectorAll('.faq');
   faqs.forEach(function (d) {
