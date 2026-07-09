@@ -124,7 +124,7 @@
       }
     });
     window.addEventListener('resize', function () {
-      if (window.innerWidth > 980 && navToggle.getAttribute('aria-expanded') === 'true') setMenu(false);
+      if (window.innerWidth > 1220 && navToggle.getAttribute('aria-expanded') === 'true') setMenu(false);
     }, { passive: true });
   }
 

@@ -24,14 +24,14 @@ h1,h2,h3{margin:0;font-family:'M PLUS Rounded 1c','Noto Sans JP',sans-serif}
 /* ===== header ===== */
 .hdr{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.82);backdrop-filter:blur(12px);border-bottom:1px solid #e7f1f9;transition:padding .3s,box-shadow .3s,background .3s}
 .hdr.shrunk{box-shadow:0 6px 24px rgba(20,120,190,.12);background:rgba(255,255,255,.94)}
-.hdrin{max-width:1120px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px;transition:padding .3s}
+.hdrin{max-width:1220px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;transition:padding .3s}
 .hdr.shrunk .hdrin{padding:8px 24px}
 .hdr .logo{height:38px;transition:height .3s}
 .hdr.shrunk .logo{height:32px}
 .brand{display:flex;align-items:center;gap:10px;flex:none}
 .brand-name{font-family:'M PLUS Rounded 1c','Noto Sans JP',sans-serif;font-weight:900;font-size:16px;color:var(--navy);letter-spacing:.3px;white-space:nowrap}
 .hdr.shrunk .brand-name{font-size:16px}
-.nav{display:flex;gap:20px;align-items:center}
+.nav{display:flex;gap:14px;align-items:center}
 .nav a{font-size:14px;font-weight:700;color:var(--navy);position:relative;padding:4px 0;white-space:nowrap}
 .nav a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;border-radius:2px;background:var(--grad-hot);transition:width .25s}
 .nav a:hover{color:var(--o2)}
@@ -339,9 +339,12 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.cta-lg:focus-visible
 }
 
 /* ===== responsive ===== */
-@media(max-width:980px){
+/* Collapse the full nav to a hamburger until the viewport can hold logo+name+nav+CTA */
+@media(max-width:1220px){
   .nav{display:none}
   .navtoggle{display:flex}
+}
+@media(max-width:980px){
   .h1{font-size:46px}
   .rgrid{grid-template-columns:repeat(3,1fr)}
   .frow{grid-template-columns:repeat(3,1fr);gap:20px 4px}
