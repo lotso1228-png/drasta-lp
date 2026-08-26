@@ -11,6 +11,7 @@
   function onScroll() {
     var y = window.scrollY || window.pageYOffset;
     if (hdr) hdr.classList.toggle('shrunk', y > 20);
+    document.body.classList.toggle('show-float', y > 520);
     if (prog) {
       var h = document.documentElement;
       var max = (h.scrollHeight - h.clientHeight) || 1;
@@ -20,6 +21,16 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', onScroll, { passive: true });
   onScroll();
+
+  // ---- Hide the floating chip while the final CTA is on screen ----
+  var finalCta = document.getElementById('contact') || document.getElementById('gcta');
+  if (finalCta && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        document.body.classList.toggle('at-final', e.isIntersecting);
+      });
+    }, { threshold: 0.15 }).observe(finalCta);
+  }
 
   // ---- Scroll-reveal for sections ----
   var reveals = document.querySelectorAll('.reveal');
@@ -135,6 +146,10 @@
       if (d.open) {
         faqs.forEach(function (other) {
           if (other !== d) other.open = false;
+        });
+        requestAnimationFrame(function () {
+          var r = d.getBoundingClientRect();
+          if (r.top < 88) d.scrollIntoView({ block: 'start' });
         });
       }
     });
