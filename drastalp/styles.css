@@ -100,6 +100,9 @@ h1,h2,h3{margin:0;font-family:'M PLUS Rounded 1c','Noto Sans JP',sans-serif}
 .rcard:hover .rico{transform:scale(1.08) rotate(-4deg);background:#fff}
 .rico img{display:block;width:46px;height:46px;max-width:none;object-fit:contain;margin:0}
 .rcard p{margin:0;font-size:13px;font-weight:800;color:var(--navy);line-height:1.5;position:relative;z-index:1}
+/* optical nudge: center the phone body of the LINE icon (bubble rides top-right) */
+.rgrid .rcard:nth-child(1) .rico img{transform:translate(7px,-3px)}
+.gpoints .gcard:nth-child(4) .gico img{transform:translate(6px,-3px)}
 
 /* pricing */
 .psec{background:linear-gradient(180deg,#f2f9fe,#eaf5fd);position:relative;overflow:hidden}
@@ -133,6 +136,8 @@ h1,h2,h3{margin:0;font-family:'M PLUS Rounded 1c','Noto Sans JP',sans-serif}
 .fstep:hover .fphoto{transform:translateY(-4px) scale(1.05);border-color:var(--blue)}
 .fphoto img{width:100%;height:100%;object-fit:contain;padding:16px}
 .fphoto.cover img{object-fit:cover;padding:0;transform:scale(1.18)}
+/* step6 wakaba: tall glyph needs extra padding for balanced size */
+.frow .fstep:nth-child(11) .fphoto img{padding:24px}
 .ftt{font-size:14px;font-weight:800;color:var(--navy);margin:0 0 6px}
 .fdesc{font-size:12px;color:#5b6b75;margin:0;line-height:1.7}
 .farrow{align-self:start;padding-top:41px;color:var(--blue);font-weight:900;font-size:24px;animation:nudgeX 1.6s ease-in-out infinite}
@@ -278,7 +283,8 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.cta-lg:focus-visible
 .persona{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
 .pcard2{background:#fff;border:1px solid var(--card-b);border-radius:18px;padding:28px 22px;text-align:center;box-shadow:0 10px 24px rgba(31,159,224,.08);transition:transform .3s,box-shadow .3s}
 .pcard2:hover{transform:translateY(-6px);box-shadow:var(--shadow-lift)}
-.pcard2 .pemoji{font-size:38px;line-height:1;display:block;margin-bottom:12px}
+.pcard2 .picon{display:flex;align-items:center;justify-content:center;width:64px;height:64px;margin:0 auto 14px;border-radius:50%;background:var(--soft)}
+.pcard2 .picon img{width:40px;height:40px;object-fit:contain}
 .pcard2 h3{font-size:18px;font-weight:900;color:var(--navy);margin:0 0 10px}
 .pcard2 p{font-size:14px;line-height:1.85;color:#41525d;margin:0}
 
