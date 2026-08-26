@@ -134,7 +134,7 @@ h1,h2,h3{margin:0;font-family:'M PLUS Rounded 1c','Noto Sans JP',sans-serif}
 .fnum{position:absolute;top:-6px;left:50%;transform:translateX(-50%);width:32px;height:32px;border-radius:50%;background:var(--grad-hot);color:#fff;font-weight:900;font-size:15px;display:flex;align-items:center;justify-content:center;z-index:3;box-shadow:0 4px 12px rgba(255,106,0,.4)}
 .fphoto{width:96px;height:96px;margin:14px auto 12px;border-radius:50%;background:var(--soft);border:3px solid #dbeefb;display:grid;place-items:center;overflow:hidden;transition:transform .3s,border-color .3s}
 .fstep:hover .fphoto{transform:translateY(-4px) scale(1.05);border-color:var(--blue)}
-.fphoto img{width:100%;height:100%;object-fit:contain;padding:16px}
+.fphoto img{width:90px;height:90px;object-fit:contain;padding:16px}
 .fphoto.cover img{object-fit:cover;padding:0;transform:scale(1.18)}
 /* step6 wakaba: tall glyph needs extra padding for balanced size */
 .frow .fstep:nth-child(11) .fphoto img{padding:24px}
