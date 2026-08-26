@@ -98,7 +98,7 @@ h1,h2,h3{margin:0;font-family:'M PLUS Rounded 1c','Noto Sans JP',sans-serif}
 .rcard:hover{transform:translateY(-8px);box-shadow:var(--shadow-lift)}
 .rico{display:flex;align-items:center;justify-content:center;width:72px;height:72px;margin:0 auto 14px;border-radius:50%;background:var(--soft);position:relative;z-index:1;transition:transform .3s;overflow:hidden}
 .rcard:hover .rico{transform:scale(1.08) rotate(-4deg);background:#fff}
-.rico img{display:block;width:44px;height:44px;max-width:none;object-fit:contain;margin:0}
+.rico img{display:block;width:46px;height:46px;max-width:none;object-fit:contain;margin:0}
 .rcard p{margin:0;font-size:13px;font-weight:800;color:var(--navy);line-height:1.5;position:relative;z-index:1}
 
 /* pricing */
@@ -238,7 +238,7 @@ h1,h2,h3{margin:0;font-family:'M PLUS Rounded 1c','Noto Sans JP',sans-serif}
 .gcard:hover{transform:translateY(-8px);box-shadow:var(--shadow-lift)}
 .gcard .gico{width:66px;height:66px;margin:0 auto 14px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--soft);transition:transform .3s}
 .gcard:hover .gico{transform:scale(1.08) rotate(-4deg);background:#fff}
-.gcard .gico img{width:38px;height:38px;max-width:none;object-fit:contain}
+.gcard .gico img{width:40px;height:40px;max-width:none;object-fit:contain}
 .gcard h3{font-size:15px;font-weight:900;color:var(--navy);margin:0 0 9px;line-height:1.5}
 .gcard p{font-size:13px;color:#5b6b75;line-height:1.75;margin:0}
 .gcontact{max-width:720px;margin:0 auto;background:#fff;border:2px solid var(--card-b);border-radius:22px;padding:30px 28px;box-shadow:0 14px 34px rgba(31,159,224,.12);text-align:center}
