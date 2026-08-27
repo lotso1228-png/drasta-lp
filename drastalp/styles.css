@@ -464,3 +464,16 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.cta-lg:focus-visible
   .frow.start3{grid-template-columns:1fr;max-width:420px;gap:22px}
   .start3 .farrow{display:none}
 }
+
+/* ===== SEO guide page + env card link ===== */
+.ecard-link{margin:-8px 0 0;padding:0 20px 18px}
+.ecard-link a{color:var(--o2);font-weight:800;font-size:13px;text-decoration:underline;text-underline-offset:2px}
+.guide h2{margin-top:40px}
+.guide strong{color:var(--navy)}
+.guide .faq{margin-bottom:10px}
+.guide-cta{display:flex;flex-direction:column;align-items:center;gap:14px;margin:44px 0 10px;padding:30px 22px;background:var(--soft);border-radius:18px}
+.guide-back{margin:4px 0 0}
+.guide-back a{color:var(--blue-d);font-weight:800;text-decoration:underline;text-underline-offset:2px}
+.src-list{margin:0 0 14px;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+.src-list li{font-size:13px}
+.src-list a{color:var(--blue-d);text-decoration:underline;text-underline-offset:2px;word-break:break-all}
