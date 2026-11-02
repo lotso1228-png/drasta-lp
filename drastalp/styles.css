@@ -508,3 +508,15 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.cta-lg:focus-visible
 /* 半角スペースはブラウザ既定の改行位置なので <wbr> では抑止できない。
    「※ ◯◯」「コース名 金額」のようにスペースを含む塊はこのクラスで分断を防ぐ。 */
 .nw{white-space:nowrap}
+
+/* ===== SP: フッターリンクのボタン高さをそろえる（<=720px のみ。PC/タブレットは不変） =====
+   .ftr .fnav（198行）の flex:1 1 320px は PC の横並び（row）用の「幅」指定だが、
+   SPでは .ftr-in が flex-direction:column（380行）になるため同じ 320px が「高さ」の指定になり、
+   nav の高さが 320px に固定 → 折り返した行が align-content:stretch で引き伸ばされ、
+   行数が減る広い画面ほど1行が高くなっていた（320px:51.7px／375px:62.4px／390px:78.5px）。
+   文字は上端に張り付いたままなので、下側だけに最大45.8pxの余白ができていた。
+   高さを内容基準に戻し、min-height でタップ領域を確保しつつ上下中央に寄せる。 */
+@media(max-width:720px){
+  .ftr .fnav{flex:0 1 auto}
+  .ftr .fnav a{display:flex;align-items:center;justify-content:center;min-height:36px;padding:4px 10px}
+}
