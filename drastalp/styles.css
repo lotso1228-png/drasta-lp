@@ -476,3 +476,20 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.cta-lg:focus-visible
 .src-list{margin:0 0 14px;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
 .src-list li{font-size:13px}
 .src-list a{color:var(--blue-d);text-decoration:underline;text-underline-offset:2px;word-break:break-all}
+
+
+/* ===== SP: TOP画像をヘッダー直下に表示（<=720px のみ。PC/タブレットは不変） =====
+   このファイルの 426 行以降「CRO additions」は @media の外にあり同一詳細度で後勝ちするため、
+   ヒーローのSP上書きは必ずファイル末尾のこのブロックに置くこと。 */
+@media(max-width:720px){
+  .hero-in{padding-top:0;gap:16px}
+  .hero-media{order:-1;margin:0 -20px}
+  .hero-photo{height:clamp(170px,46vw,240px);border-radius:0 0 22px 22px;box-shadow:0 12px 24px rgba(31,159,224,.18);animation:none}
+  .hero-photo::before{display:none}
+  /* グリッドの min-height:auto が img を実寸まで押し広げ、object-fit/-position が効かなくなるため 0 に */
+  .hero-photo img{min-height:0;object-position:50% 60%}
+  .qrbox{display:none}
+}
+@media(max-width:400px){
+  .hdr.shrunk .hdrin{padding:8px 16px}
+}
