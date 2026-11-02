@@ -70,7 +70,7 @@ h1,h2,h3{margin:0;font-family:'M PLUS Rounded 1c','Noto Sans JP',sans-serif}
 .hero-media{position:relative}
 .hero-photo{width:100%;height:400px;border-radius:24px;background:linear-gradient(160deg,#ffffff,#e9f6fe);display:grid;place-items:center;overflow:hidden;box-shadow:0 26px 54px rgba(31,159,224,.24);position:relative;z-index:2;animation:rise .8s .3s both}
 .hero-photo::before{content:"";position:absolute;inset:0;padding:3px;border-radius:24px;background:var(--grad-cool);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:.7}
-.hero-photo img{width:100%;height:100%;object-fit:cover}
+.hero-photo img{width:100%;height:100%;object-fit:cover;transform-origin:60% 50%;animation:kenburns 24s ease-in-out infinite alternate}
 .hero-blob{position:absolute;z-index:3;pointer-events:none;opacity:.95;height:auto;filter:drop-shadow(0 12px 20px rgba(31,159,224,.2))}
 .b1{width:260px;top:-40px;left:-60px}
 .b2{width:180px;bottom:20px;right:-40px}
@@ -331,6 +331,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.cta-lg:focus-visible
 .floaty.slow{animation-duration:7s}
 .floaty.fast{animation-duration:4s}
 @keyframes float{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-16px) rotate(2deg)}}
+@keyframes kenburns{from{transform:scale(1)}to{transform:scale(1.05)}}
 
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
@@ -375,9 +376,6 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.cta-lg:focus-visible
   .fnote{text-align:left;padding:12px 16px}
   .ghero .glead{text-align:left}
   .fcta>.hero-blob{display:none}
-  .hero-media .b1{width:140px;top:-24px;left:-16px}
-  .hero-media .b2{width:110px;right:-16px}
-  .hero-media .b3{display:none}
   .fee-ttl small{font-size:14px}
   .ftr-in{flex-direction:column;align-items:center;text-align:center;gap:20px}
   .ftr-brand{align-items:center}
