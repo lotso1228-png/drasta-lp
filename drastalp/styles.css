@@ -493,3 +493,18 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.cta-lg:focus-visible
 @media(max-width:400px){
   .hdr.shrunk .hdrin{padding:8px 16px}
 }
+
+/* ===== SP: 和文の改行位置を全機種でそろえる（<=720px のみ。PC/タブレットは不変） =====
+   HTML側で文節の切れ目に <wbr> を置き、それ以外の位置では折り返さない方式。
+   .pfeat li（122行）/ .ebody li（154行）と同じ keep-all + overflow-wrap:anywhere の流儀。
+   word-break:auto-phrase は iOS Safari 非対応で Android と改行位置がずれるため不採用。 */
+@media(max-width:720px){
+  .fee-total,.feenote,.fdesc,.fnote,.sttl span,.rproof,.pcard2 p,.env-lead,
+  .loan,.fcta h2,.fcta-sub,.msg-b,.cta-lg .sub{word-break:keep-all;overflow-wrap:anywhere}
+  /* flex の1行配置だと本文が約49pxに潰れ「分割/払い/に対/応。」と2文字ずつ折り返していた */
+  .loan{flex-direction:column;gap:8px;text-align:center;padding:16px 18px}
+  .fee-total strong{white-space:nowrap}
+}
+/* 半角スペースはブラウザ既定の改行位置なので <wbr> では抑止できない。
+   「※ ◯◯」「コース名 金額」のようにスペースを含む塊はこのクラスで分断を防ぐ。 */
+.nw{white-space:nowrap}
