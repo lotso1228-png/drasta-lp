@@ -520,3 +520,10 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.cta-lg:focus-visible
   .ftr .fnav{flex:0 1 auto}
   .ftr .fnav a{display:flex;align-items:center;justify-content:center;min-height:36px;padding:4px 10px}
 }
+
+/* ===== SP: 環境カードの写真を切り抜かずに見せる（<=720px のみ。PC/タブレットは不変） =====
+   1カラムでカード幅が約340pxになるのに高さ120px固定だと約2.8:1の帯に切り抜かれ、
+   「教官の手元」「試験場の建物」が見切れていた。写真（3:2）と同じ比率の枠にして全体を表示する。 */
+@media(max-width:720px){
+  .ephoto{height:auto;aspect-ratio:3/2}
+}
