@@ -527,3 +527,15 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.cta-lg:focus-visible
 @media(max-width:720px){
   .ephoto{height:auto;aspect-ratio:3/2}
 }
+
+/* フッターナビ：3グループの縦並び（2026-11） */
+.ftr .fnav{display:grid;grid-template-columns:repeat(3,minmax(0,auto));gap:8px 48px;justify-content:end;flex:1 1 520px;font-size:13px;font-weight:700}
+.ftr .fcol{display:flex;flex-direction:column;align-items:flex-start;gap:2px;min-width:0}
+.ftr .fhd{margin:0 0 6px;font-size:12px;font-weight:800;letter-spacing:.08em;color:#9fd2f3;padding-bottom:6px;border-bottom:1px solid rgba(234,244,251,.22);align-self:stretch}
+.ftr .fnav a{display:block;padding:5px 0;line-height:1.5;color:#eaf4fb;min-height:0}
+.ftr .fnav a:hover{color:#fff;text-decoration:underline}
+@media(max-width:720px){
+  .ftr .fnav{grid-template-columns:1fr 1fr;gap:22px 20px;width:100%;flex:0 1 auto;justify-content:stretch;text-align:left}
+  .ftr .fcol:nth-child(2){grid-row:span 2}
+  .ftr .fnav a{display:block;padding:7px 0;min-height:0;justify-content:flex-start}
+}
