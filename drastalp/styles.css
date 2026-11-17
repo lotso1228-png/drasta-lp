@@ -564,3 +564,9 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.cta-lg:focus-visible
 .cm-nav{display:flex;justify-content:space-between;gap:10px}
 .cm-nav button{flex:1;max-width:200px}
 .cm-nav button:disabled{opacity:.35;cursor:default}
+.cm-legend{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;margin:8px 0 0;font-size:12px;font-weight:700;color:#566874}
+.cm-legend span{display:inline-block;margin-right:-8px}
+.cm-legend .lg-a{width:22px;height:6px;border-radius:3px;background:#ff6a00}
+.cm-legend .lg-d{width:22px;height:6px;border-radius:3px;background:#1f9fe0;opacity:.45}
+.cm-legend .lg-s{width:12px;height:12px;border-radius:50%;background:#fff;border:3px solid #ff6a00;box-sizing:border-box}
+.cm-legend .lg-e{width:12px;height:12px;border-radius:50%;background:#ff6a00}
