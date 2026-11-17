@@ -4,7 +4,7 @@
 
   // 問題にIDをつけてまとめる（k=仮免, h=本免, d=危険予測）
   var ITEMS = {};
-  Q.karimen.q.forEach(function (x, i) { ITEMS['k' + i] = { id: 'k' + i, type: 'ox', t: x.t, a: x.a, e: x.e }; });
+  Q.karimen.q.forEach(function (x, i) { ITEMS['k' + i] = { id: 'k' + i, type: 'ox', t: x.t, a: x.a, e: x.e, s: x.s }; });
   Q.honmen.q.forEach(function (x, i) { ITEMS['h' + i] = { id: 'h' + i, type: 'ox', t: x.t, a: x.a, e: x.e }; });
   Q.kiken.forEach(function (x, i) { ITEMS['d' + i] = { id: 'd' + i, type: 'kiken', img: 'assets/kiken/d' + i + '.svg?v=1', scene: x.scene, sub: x.sub, e: x.e }; });
   var K = Object.keys(ITEMS).filter(function (k) { return k[0] === 'k'; });
@@ -25,6 +25,7 @@
   function mark(b) { return b === undefined ? '－' : (b ? '○' : '×'); }
   function fig(it, small) { return '<figure class="qz-fig' + (small ? ' sm' : '') + '"><img src="' + it.img + '" alt="' + esc(it.scene) + '" width="400" height="300" loading="lazy" decoding="async"><figcaption>上から見た図（青い車が自車）</figcaption></figure>'; }
   function pts(it) { return it.type === 'kiken' ? 2 : 1; }
+  function sign(it) { return it.s ? '<img class="qz-sign" src="assets/signs/' + it.s + '.svg?v=1" alt="標識の図" width="120" height="120" decoding="async">' : ''; }
   function top() { var y = root.getBoundingClientRect().top + window.scrollY - 90; if (Math.abs(window.scrollY - y) > 40) window.scrollTo({ top: y, behavior: 'smooth' }); }
   function stopTimer() { if (timer) { clearInterval(timer); timer = null; } }
   function fmt(s) { var m = Math.floor(s / 60), r = s % 60; return m + ':' + (r < 10 ? '0' : '') + r; }
@@ -93,7 +94,7 @@
       '<div class="qz-head"><span>' + label() + '</span><span>' + (st.exam ? '<span class="qz-timer">残り ' + fmt(Math.max(0, Math.round((st.end - Date.now()) / 1000))) + '</span>　' : '') + (st.i + 1) + ' / ' + n + '</span></div>' +
       '<div class="qz-bar"><i style="width:' + (st.i / n * 100) + '%"></i></div>';
     if (it.type === 'ox') {
-      h += '<p class="qz-q"><b>問' + (st.i + 1) + '</b>' + esc(it.t) + '</p>' +
+      h += sign(it) + '<p class="qz-q"><b>問' + (st.i + 1) + '</b>' + esc(it.t) + '</p>' +
         '<div class="qz-ans"><button class="qz-ox" data-pick="1" aria-label="正しい（○）">○</button><button class="qz-ox" data-pick="0" aria-label="誤り（×）">×</button></div>';
     } else {
       h += '<p class="qz-q"><b>問' + (st.i + 1) + '　危険予測（2点）</b></p>' + fig(it) + '<p class="qz-q">' + esc(it.scene) + '<span class="qz-sub">この状況で、次のことに注意して運転する場合、それぞれ正しければ○、誤りなら×を選んでください。（3つすべて正解で2点）</span></p><ol class="qz-kk">';
@@ -184,7 +185,7 @@
     var it = ITEMS[id], a = st.ans[id], cls = !a ? 'is-blank' : a.ok ? 'is-ok' : 'is-ng', h;
     var status = !a ? '<span class="na">未回答</span>' : a.ok ? '<span class="ok">正解</span>' : '<span class="ng">不正解</span>';
     if (it.type === 'ox') {
-      h = '<p class="qz-lq">' + esc(it.t) + '</p><p class="qz-lmeta">' + (onlyWrong ? '' : status) +
+      h = sign(it) + '<p class="qz-lq">' + esc(it.t) + '</p><p class="qz-lmeta">' + (onlyWrong ? '' : status) +
         '<span class="ng">あなたの答え：' + mark(a && a.v) + '</span><span class="ok">正解：' + mark(it.a) + '</span></p>';
     } else {
       h = '<p class="qz-lq">【危険予測】' + esc(it.scene) + '</p>' + fig(it, true) + (onlyWrong ? '' : '<p class="qz-lmeta">' + status + '</p>') + '<ul class="qz-ksub">';

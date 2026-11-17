@@ -548,3 +548,4 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.cta-lg:focus-visible
 .quiz-go:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(14,92,158,.3)}
 .quiz-go small{display:block;font-size:12px;font-weight:700;opacity:.9}
 .quiz-go .arw{font-size:22px;line-height:1}
+.qz-sign{display:block;width:110px;height:110px;margin:4px auto 12px}.qz-list .qz-sign,.qz-rev .qz-sign{width:72px;height:72px;margin:0 0 6px}
