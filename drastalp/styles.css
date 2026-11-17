@@ -549,3 +549,4 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.cta-lg:focus-visible
 .quiz-go small{display:block;font-size:12px;font-weight:700;opacity:.9}
 .quiz-go .arw{font-size:22px;line-height:1}
 .qz-sign{display:block;width:110px;height:110px;margin:4px auto 12px}.qz-list .qz-sign,.qz-rev .qz-sign{width:72px;height:72px;margin:0 0 6px}
+.legal ul.sg-grid,.sg-grid{list-style:none;padding:0;margin:14px 0 26px;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}.legal .sg-grid li{display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px;padding:12px 8px;border:1px solid #e3edf5;border-radius:12px;background:#fff;margin:0}.legal .sg-grid li::before{display:none}.sg-grid img{width:96px;height:96px}.sg-grid b{font-size:14px;line-height:1.4}.sg-grid span{font-size:12.5px;line-height:1.6;color:#4a5a66}@media(max-width:480px){.legal ul.sg-grid{grid-template-columns:repeat(2,1fr)}}
