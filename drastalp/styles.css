@@ -548,3 +548,19 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.cta-lg:focus-visible
 .quiz-go:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(14,92,158,.3)}
 .quiz-go small{display:block;font-size:12px;font-weight:700;opacity:.9}
 .quiz-go .arw{font-size:22px;line-height:1}
+
+/* 試験場コース図（2026-11） */
+.cm{margin:14px 0 10px;background:#fff;border:2px solid #d3ebf8;border-radius:18px;padding:14px;box-shadow:0 8px 20px rgba(31,159,224,.07)}
+.cm-tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.cm-tabs button,.cm-nav button{font:inherit;font-weight:800;font-size:15px;border:2px solid #cfe6f6;background:#f6fbff;color:var(--navy);border-radius:999px;padding:6px 14px;cursor:pointer;min-width:44px}
+.cm-tabs button.on{background:var(--blue);border-color:var(--blue);color:#fff}
+.cm-svg{display:block;width:100%;height:auto;border-radius:12px}
+.cm-active{animation:cmdash 1.2s ease-out}
+@keyframes cmdash{from{stroke-dasharray:4000;stroke-dashoffset:4000}to{stroke-dasharray:4000;stroke-dashoffset:0}}
+@media (prefers-reduced-motion:reduce){.cm-active{animation:none}}
+.cm-cap{margin-top:10px}
+.cm-text{margin:0 0 10px;font-size:15px;line-height:1.8;color:#41525d}
+.cm-text b{display:block;color:var(--navy);font-size:16px;margin-bottom:2px}
+.cm-nav{display:flex;justify-content:space-between;gap:10px}
+.cm-nav button{flex:1;max-width:200px}
+.cm-nav button:disabled{opacity:.35;cursor:default}
