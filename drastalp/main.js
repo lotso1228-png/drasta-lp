@@ -155,3 +155,11 @@
     });
   });
 })();
+
+/* Googleアナリティクス：LINE相談ボタンのクリックを計測（2026-11） */
+document.addEventListener('click', function (e) {
+  var a = e.target.closest && e.target.closest('a[href*="lin.ee"]');
+  if (!a || typeof gtag !== 'function') return;
+  var where = a.closest('.mobilebar') ? 'mobile_bar' : a.closest('.hdr') ? 'header' : a.closest('.guide-cta') ? 'guide_bottom' : 'page';
+  gtag('event', 'line_click', { link_location: where, page_path: location.pathname });
+});

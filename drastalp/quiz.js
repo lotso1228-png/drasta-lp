@@ -67,6 +67,7 @@
     else ids = mix(T.exam.text, T.exam.textN, test + ':exam').concat(shuffle(D).slice(0, T.exam.kiken));
     if (!ids.length) return home();
     st = { test: test, mode: mode, list: ids, i: 0, ans: {}, exam: mode === 'exam' };
+    if (typeof gtag === 'function') gtag('event', 'quiz_start', { quiz_test: test, quiz_mode: mode, quiz_questions: ids.length });
     if (st.exam) {
       st.end = Date.now() + T.exam.min * 60000;
       timer = setInterval(tick, 1000);
@@ -146,6 +147,7 @@
       if (a.ok) got += pts(it); else wrong.push(id);
     });
     var rate = Math.round(got / max * 100), pass = got / max >= 0.9;
+    if (typeof gtag === 'function') gtag('event', 'quiz_complete', { quiz_test: st.test, quiz_mode: st.mode, quiz_score: rate, quiz_pass: pass ? 'yes' : 'no', quiz_timeout: st.timeout ? 'yes' : 'no' });
     // 記録：まちがえた問題を追加し、正解した問題は外す
     var store = load(st.test);
     Object.keys(st.ans).forEach(function (id) {
