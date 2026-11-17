@@ -53,7 +53,7 @@
     f = Math.max(n - T.length, Math.min(f, F.length));
     return F.slice(0, f).concat(T.slice(0, n - f));
   }
-  // 標識問題は全体の約2割（10問に2問）を必ず含める
+  // 標識問題は全体の約1割を必ず含める
   function mix(pool, n, key) {
     var lo = Math.ceil(n * 0.25), hi = Math.floor(n * 0.40);
     var prev = lastF[key];
@@ -63,7 +63,7 @@
     lastF[key] = f;
     try { sessionStorage.setItem('drasta-quiz-f-' + key, f); } catch (e) {}
     var sg = pool.filter(function (id) { return ITEMS[id].s; }), tx = pool.filter(function (id) { return !ITEMS[id].s; });
-    var ns = Math.min(sg.length, Math.round(n * 0.2)), fs = Math.round(f * ns / n);
+    var ns = Math.min(sg.length, Math.round(n * 0.1)), fs = Math.round(f * ns / n);
     return shuffle(pick(sg, ns, fs).concat(pick(tx, n - ns, f - fs)));
   }
 
