@@ -24,20 +24,10 @@
   var BASE =
     // 芝生
     '<rect width="1000" height="640" rx="20" fill="#cfe8c4"/>' +
-    // 外周（2車線）
-    '<rect x="50" y="45" width="900" height="550" rx="140" fill="none" stroke="#8a9299" stroke-width="72"/>' +
-    '<rect x="50" y="45" width="900" height="550" rx="140" fill="none" stroke="#fff" stroke-width="2.5" stroke-dasharray="16 14"/>' +
-    // 内周・中央の道路
-    '<rect x="200" y="150" width="600" height="340" rx="18" fill="none" stroke="#9aa2a8" stroke-width="34"/>' +
-    '<line x1="200" y1="320" x2="800" y2="320" stroke="#9aa2a8" stroke-width="34"/>' +
-    '<line x1="400" y1="150" x2="400" y2="595" stroke="#9aa2a8" stroke-width="34"/>' +
-    '<line x1="640" y1="320" x2="640" y2="595" stroke="#9aa2a8" stroke-width="30"/>' +
-    '<line x1="500" y1="320" x2="500" y2="490" stroke="#9aa2a8" stroke-width="30"/>' +
-    '<line x1="300" y1="352" x2="400" y2="352" stroke="#9aa2a8" stroke-width="26"/>' +
-    '<line x1="300" y1="352" x2="300" y2="490" stroke="#9aa2a8" stroke-width="30"/>' +
-    // S字・クランク
-    '<path d="M 620 320 C 670 320 600 240 680 232 C 760 224 690 150 745 150" fill="none" stroke="#9aa2a8" stroke-width="28"/>' +
-    '<path d="M 340 150 L 340 205 L 290 205 L 290 262 L 250 262 L 250 320" fill="none" stroke="#9aa2a8" stroke-width="28" stroke-linejoin="miter"/>' +
+    // 道路：白い縁取り → 舗装 の順に重ねて、合流部分を1本につなげる
+    roads() +
+    // 外周の車線境界（破線）
+    '<rect x="50" y="45" width="900" height="550" rx="140" fill="none" stroke="#fff" stroke-width="3" stroke-dasharray="18 14"/>' +
     // 坂道
     '<rect x="285" y="395" width="30" height="50" fill="url(#cm-hatch)"/>' +
     // 交差点の横断歩道
@@ -49,6 +39,24 @@
     stop(712, 165) + stop(500, 470) + stop(640, 470) +
     '<g transform="translate(940 600)"><circle r="17" fill="#fff" stroke="#24333d" stroke-width="2"/><path d="M0 -12 L6 4 L0 0 L-6 4Z" fill="#e53935"/><text y="12" text-anchor="middle" font-size="10" font-weight="900" fill="#24333d">北</text></g>';
 
+  function roads() {
+    var R = [
+      ['M 190 45 L 810 45 Q 950 45 950 185 L 950 455 Q 950 595 810 595 L 190 595 Q 50 595 50 455 L 50 185 Q 50 45 190 45 Z', 76],
+      ['M 218 150 L 782 150 Q 800 150 800 168 L 800 472 Q 800 490 782 490 L 218 490 Q 200 490 200 472 L 200 168 Q 200 150 218 150 Z', 40],
+      ['M 200 320 L 800 320', 40],
+      ['M 400 150 L 400 595', 40],
+      ['M 640 320 L 640 595', 40],
+      ['M 500 320 L 500 490', 40],
+      ['M 300 352 L 400 352', 34],
+      ['M 300 352 L 300 490', 36],
+      ['M 620 320 C 670 320 600 240 680 232 C 760 224 690 150 745 150', 34],
+      ['M 340 150 L 340 205 L 290 205 L 290 262 L 250 262 L 250 320', 34]
+    ];
+    function layer(color, extra) {
+      return R.map(function (r) { return '<path d="' + r[0] + '" fill="none" stroke="' + color + '" stroke-width="' + (r[1] + extra) + '" stroke-linejoin="round"/>'; }).join('');
+    }
+    return layer('#ffffff', 8) + layer('#7d868d', 0);
+  }
   function lab(x, y, t, bg, fg) {
     var w = t.length * 15 + 14;
     return '<g><rect x="' + (x - w / 2) + '" y="' + (y - 12) + '" width="' + w + '" height="24" rx="12" fill="' + (bg || '#fff') + '" stroke="#24333d" stroke-width="1.5"/>' +
