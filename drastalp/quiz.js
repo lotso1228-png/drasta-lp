@@ -43,13 +43,28 @@
     root.innerHTML = h + '</div><p class="qz-note">本番形式は、本番と同じ問題数・制限時間・合格点です。解答中は正解を表示せず、最後にまとめて採点します。</p>';
   }
 
+  // 答えが×の問題を、全体の25〜40％の範囲で毎回ちがう数だけ選ぶ
+  var lastF = {};
+  function mix(pool, n, key) {
+    var F = shuffle(pool.filter(function (id) { return !ITEMS[id].a; }));
+    var T = shuffle(pool.filter(function (id) { return ITEMS[id].a; }));
+    var lo = Math.max(Math.ceil(n * 0.25), n - T.length), hi = Math.min(Math.floor(n * 0.40), F.length);
+    var prev = lastF[key];
+    if (prev === undefined) { try { prev = +sessionStorage.getItem('drasta-quiz-f-' + key); } catch (e) {} }
+    var f, tries = 0;
+    do { f = lo + Math.floor(Math.random() * (hi - lo + 1)); } while (hi > lo && f === prev && ++tries < 20);
+    lastF[key] = f;
+    try { sessionStorage.setItem('drasta-quiz-f-' + key, f); } catch (e) {}
+    return shuffle(F.slice(0, f).concat(T.slice(0, n - f)));
+  }
+
   function start(test, mode, list) {
     stopTimer();
     var T = TESTS[test], ids;
     if (list) ids = shuffle(list);
-    else if (mode === 'quick') ids = shuffle(T.quick.from).slice(0, T.quick.n);
+    else if (mode === 'quick') ids = mix(T.quick.from, T.quick.n, test + ':quick');
     else if (mode === 'miss') ids = shuffle(load(test));
-    else ids = shuffle(T.exam.text).slice(0, T.exam.textN).concat(shuffle(D).slice(0, T.exam.kiken));
+    else ids = mix(T.exam.text, T.exam.textN, test + ':exam').concat(shuffle(D).slice(0, T.exam.kiken));
     if (!ids.length) return home();
     st = { test: test, mode: mode, list: ids, i: 0, ans: {}, exam: mode === 'exam' };
     if (st.exam) {
