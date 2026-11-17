@@ -216,8 +216,8 @@ body.show-float:not(.at-final) .float-cta{opacity:1;pointer-events:auto;transfor
 .legal h2{font-size:18px;font-weight:800;color:var(--navy);margin:34px 0 10px;padding-left:12px;border-left:4px solid var(--blue);border-radius:2px}
 .legal p{margin:0 0 12px;font-size:15px;line-height:1.95;color:#41525d}
 .legal>ul{margin:0 0 14px;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
-.legal>ul li{font-size:15px;line-height:1.8;color:#41525d;display:flex;gap:10px}
-.legal>ul li::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--green);margin-top:8px;flex:none}
+.legal>ul li{font-size:15px;line-height:1.8;color:#41525d;position:relative;padding-left:17px}
+.legal>ul li::before{content:"";position:absolute;left:0;top:10px;width:7px;height:7px;border-radius:50%;background:var(--green)}
 .ltable{width:100%;border-collapse:separate;border-spacing:0;margin:12px 0 14px;font-size:14px;box-shadow:0 8px 20px rgba(31,159,224,.07);border-radius:14px;overflow:hidden}
 .ltable th,.ltable td{border-bottom:1px solid #eef3f8;padding:14px 16px;text-align:left;vertical-align:top;line-height:1.85}
 .ltable th{background:var(--soft);color:var(--navy);font-weight:800;width:36%}
