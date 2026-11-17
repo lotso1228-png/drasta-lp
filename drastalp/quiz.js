@@ -24,10 +24,13 @@
   // ===== 学習記録（この端末のブラウザに保存） =====
   var LOGKEY = 'drasta-study-v1';
   function lg() { var o; try { o = JSON.parse(localStorage.getItem(LOGKEY)); } catch (e) {} o = o || {}; o.days = o.days || {}; o.seen = o.seen || {}; o.exams = o.exams || []; o.goal = o.goal || 30; o.sg = o.sg || [0, 0]; return o; }
+  function ga(n, p) { if (typeof gtag === 'function') gtag('event', n, p || {}); }
   function lsave(o) { try { localStorage.setItem(LOGKEY, JSON.stringify(o)); } catch (e) {} }
   function dkey(d) { d = d || new Date(); return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2); }
   function logAnswer(id, ok) {
-    var o = lg(), k = dkey(); o.days[k] = (o.days[k] || 0) + 1;
+    var o = lg(), k = dkey(), before = o.days[k] || 0; o.days[k] = before + 1;
+    if (!before) ga('study_day_start', { study_streak: streak(o) });
+    if (before + 1 === o.goal) ga('study_goal_reached', { study_goal: o.goal, study_streak: streak(o) });
     o.seen[id] = ok ? 2 : Math.max(o.seen[id] || 0, 1);
     if (ITEMS[id].s) { o.sg[0]++; if (ok) o.sg[1]++; }
     lsave(o);
@@ -206,7 +209,7 @@
       if (a.ok) got += pts(it); else wrong.push(id);
     });
     var rate = Math.round(got / max * 100), pass = got / max >= 0.9;
-    if (st.exam) { var lo = lg(); lo.exams.push({ t: st.test, r: rate, d: dkey() }); lo.exams = lo.exams.slice(-40); lsave(lo); }
+    if (st.exam) { var lo = lg(); lo.exams.push({ t: st.test, r: rate, d: dkey() }); lo.exams = lo.exams.slice(-40); lsave(lo); var ex = lo.exams.filter(function (e) { return e.t === st.test; }); if (ex.length >= 2 && ex[ex.length - 1].r >= 90 && ex[ex.length - 2].r >= 90) ga('study_pass_zone', { quiz_test: st.test }); }
     if (typeof gtag === 'function') gtag('event', 'quiz_complete', { quiz_test: st.test, quiz_mode: st.mode, quiz_score: rate, quiz_pass: pass ? 'yes' : 'no', quiz_timeout: st.timeout ? 'yes' : 'no' });
     // 記録：まちがえた問題を追加し、正解した問題は外す
     var store = load(st.test);
@@ -272,9 +275,9 @@
     else if (b.hasAttribute('data-quit')) result();
     else if (b.hasAttribute('data-home')) { home(); top(); }
     else if (d.again === 'same') start(st.test, st.mode === 'miss' ? 'quick' : st.mode);
-    else if (d.goal) { var o = lg(); o.goal = +d.goal; lsave(o); home(); }
-    else if (d.unsolved) { start(d.unsolved, 'quick', shuffle(unsolved(d.unsolved)).slice(0, 30)); }
-    else if (b.hasAttribute('data-reset')) { if (window.confirm('学習記録をすべて消去します。よろしいですか？')) { try { localStorage.removeItem(LOGKEY); } catch (e) {} home(); } }
+    else if (d.goal) { var o = lg(); o.goal = +d.goal; lsave(o); ga('study_goal_set', { study_goal: o.goal }); home(); }
+    else if (d.unsolved) { ga('study_review_unsolved', { quiz_test: d.unsolved }); start(d.unsolved, 'quick', shuffle(unsolved(d.unsolved)).slice(0, 30)); }
+    else if (b.hasAttribute('data-reset')) { if (window.confirm('学習記録をすべて消去します。よろしいですか？')) { try { localStorage.removeItem(LOGKEY); } catch (e) {} ga('study_reset'); home(); } }
     else if (d.again === 'miss') start(st.test, 'miss', st.wrongNow);
   });
 
