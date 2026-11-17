@@ -550,3 +550,37 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.cta-lg:focus-visible
 .quiz-go .arw{font-size:22px;line-height:1}
 .qz-sign{display:block;width:110px;height:110px;margin:4px auto 12px}.qz-list .qz-sign,.qz-rev .qz-sign{width:72px;height:72px;margin:0 0 6px}
 .legal ul.sg-grid,.sg-grid{list-style:none;padding:0;margin:14px 0 26px;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}.legal .sg-grid li{display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px;padding:12px 8px;border:1px solid #e3edf5;border-radius:12px;background:#fff;margin:0}.legal .sg-grid li::before{display:none}.sg-grid img{width:96px;height:96px}.sg-grid b{font-size:14px;line-height:1.4}.sg-grid span{font-size:12.5px;line-height:1.6;color:#4a5a66}@media(max-width:480px){.legal ul.sg-grid{grid-template-columns:repeat(2,1fr)}}
+/* 学習記録パネル */
+.sl{border:1px solid #d9e9f5;border-radius:16px;background:linear-gradient(180deg,#f5fbff,#fff);padding:18px 16px;margin:0 0 18px}
+.sl-h{font-size:17px;font-weight:900;color:#0f5f99;margin:0 0 12px}
+.sl-lab{display:block;font-size:12px;font-weight:700;color:#5a6b78;margin-bottom:4px}
+.sl-top{display:flex;gap:12px;align-items:stretch}
+.sl-today{flex:1;background:#fff;border:1px solid #e3edf5;border-radius:12px;padding:12px}
+.sl-today>b{font-size:28px;font-weight:900;color:#1a2b38;line-height:1.1}.sl-today>b small{font-size:14px;color:#5a6b78;font-weight:700}
+.sl-msg{display:block;font-size:12.5px;color:#0f7a43;font-weight:700;margin-top:6px}
+.sl-streak{width:96px;background:#fff7ed;border:1px solid #fde1c2;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.sl-fire{font-size:26px;line-height:1}.sl-streak b{font-size:24px;font-weight:900;color:#e8590c}.sl-streak small{font-size:12px;margin-left:2px}
+.sl-bar{height:9px;background:#e8eef3;border-radius:9px;overflow:hidden;margin:6px 0 2px}.sl-bar i{display:block;height:100%;background:#1f9fe0;border-radius:9px}.sl-bar.ok i{background:#2fb36b}
+.sl-goal{display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:13px;font-weight:700;color:#3b4b57;margin:12px 0}
+.sl-goal button{border:1px solid #cfdde8;background:#fff;border-radius:99px;padding:4px 12px;font-size:12.5px;font-weight:700;color:#3b4b57;cursor:pointer}.sl-goal button.on{background:#1f9fe0;border-color:#1f9fe0;color:#fff}
+.sl-cal-w{background:#fff;border:1px solid #e3edf5;border-radius:12px;padding:10px 12px}
+.sl-cal{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;max-width:280px}
+.sl-cal i,.sl-leg i{display:block;aspect-ratio:1;border-radius:4px;background:#edf1f4}
+.sl-cal .lv1,.sl-leg .lv1{background:#bfe3f7}.sl-cal .lv2,.sl-leg .lv2{background:#5bbbea}.sl-cal .lv3,.sl-leg .lv3{background:#1479b8}
+.sl-cal .now{outline:2px solid #f08c00;outline-offset:1px}
+.sl-leg{display:flex;align-items:center;gap:4px;font-size:11px;color:#5a6b78;margin-top:8px}.sl-leg i{width:12px}
+.sl-prog{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.sl-card{background:#fff;border:1px solid #e3edf5;border-radius:12px;padding:12px}
+.sl-card h4{font-size:15px;font-weight:900;margin:0 0 8px;display:flex;align-items:center;gap:8px}
+.sl-ok{font-size:11px;background:#2fb36b;color:#fff;border-radius:99px;padding:2px 8px}
+.sl-row{display:flex;justify-content:space-between;font-size:13px;margin:8px 0 0}.sl-row b{font-weight:800}
+.sl-ex{position:relative;display:flex;align-items:flex-end;gap:6px;height:64px;margin:8px 0 2px;padding-top:12px;border-bottom:1px solid #d5dee6}
+.sl-ex i{flex:1;background:#9fb6c8;border-radius:4px 4px 0 0;position:relative}.sl-ex i.p{background:#2fb36b}
+.sl-ex em{position:absolute;top:-15px;left:0;right:0;text-align:center;font-style:normal;font-size:10.5px;font-weight:700;color:#3b4b57}
+.sl-line{position:absolute;left:0;right:0;bottom:calc(90% * 52 / 64);border-top:1px dashed #e8590c}
+.sl-hint{font-size:12px;color:#5a6b78;margin:6px 0 0}
+.sl-acts .qz-btn{margin-top:8px;font-size:13px;padding:10px}
+.sl-sign{font-size:13.5px;margin:12px 0 0}
+.sl-note{font-size:11.5px;color:#6b7b87;margin:10px 0 0;line-height:1.7}
+.sl-reset{border:0;background:none;color:#8a97a1;text-decoration:underline;font-size:11.5px;cursor:pointer;margin-left:6px;padding:0}
+@media(max-width:600px){.sl-prog{grid-template-columns:1fr}}

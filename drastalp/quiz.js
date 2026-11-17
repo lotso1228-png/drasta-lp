@@ -21,6 +21,56 @@
 
   function load(k) { try { return JSON.parse(localStorage.getItem(KEY + k)) || []; } catch (e) { return []; } }
   function save(k, a) { try { localStorage.setItem(KEY + k, JSON.stringify(a)); } catch (e) {} }
+  // ===== 学習記録（この端末のブラウザに保存） =====
+  var LOGKEY = 'drasta-study-v1';
+  function lg() { var o; try { o = JSON.parse(localStorage.getItem(LOGKEY)); } catch (e) {} o = o || {}; o.days = o.days || {}; o.seen = o.seen || {}; o.exams = o.exams || []; o.goal = o.goal || 30; o.sg = o.sg || [0, 0]; return o; }
+  function lsave(o) { try { localStorage.setItem(LOGKEY, JSON.stringify(o)); } catch (e) {} }
+  function dkey(d) { d = d || new Date(); return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2); }
+  function logAnswer(id, ok) {
+    var o = lg(), k = dkey(); o.days[k] = (o.days[k] || 0) + 1;
+    o.seen[id] = ok ? 2 : Math.max(o.seen[id] || 0, 1);
+    if (ITEMS[id].s) { o.sg[0]++; if (ok) o.sg[1]++; }
+    lsave(o);
+  }
+  function streak(o) {
+    var d = new Date(), n = 0;
+    if (!o.days[dkey(d)]) d.setDate(d.getDate() - 1);
+    while (o.days[dkey(d)]) { n++; d.setDate(d.getDate() - 1); }
+    return n;
+  }
+  function cover(o, pool) { var a = 0, c = 0; pool.forEach(function (id) { if (o.seen[id]) a++; if (o.seen[id] === 2) c++; }); return { a: a, c: c, n: pool.length }; }
+  function unsolved(test) { var o = lg(), pool = test === 'karimen' ? K : H.concat(SG); return pool.filter(function (id) { return o.seen[id] !== 2; }); }
+  function panel() {
+    var o = lg(), today = o.days[dkey()] || 0, sk = streak(o), g = o.goal, h = '<section class="sl" aria-label="学習記録"><h3 class="sl-h">あなたの学習記録</h3>';
+    h += '<div class="sl-top"><div class="sl-today"><span class="sl-lab">今日の学習</span><b>' + today + '<small> / ' + g + '問</small></b>' +
+      '<div class="sl-bar"><i style="width:' + Math.min(100, today / g * 100) + '%"></i></div>' +
+      '<span class="sl-msg">' + (today >= g ? '今日の目標達成！' : 'あと' + (g - today) + '問で今日の目標達成') + '</span></div>' +
+      '<div class="sl-streak"><span class="sl-fire" aria-hidden="true">' + (sk ? '🔥' : '・') + '</span><b>' + sk + '<small>日連続</small></b></div></div>';
+    h += '<div class="sl-goal">1日の目標：' + [10, 20, 30, 50].map(function (n) { return '<button type="button" class="' + (n === g ? 'on' : '') + '" data-goal="' + n + '">' + n + '問</button>'; }).join('') + '</div>';
+    var d = new Date(); d.setDate(d.getDate() - 27); var cal = '';
+    for (var i = 0; i < 28; i++) { var k = dkey(d), c = o.days[k] || 0, lv = !c ? 0 : c < g / 2 ? 1 : c < g ? 2 : 3; cal += '<i class="lv' + lv + (i === 27 ? ' now' : '') + '" title="' + (d.getMonth() + 1) + '/' + d.getDate() + '：' + c + '問"></i>'; d.setDate(d.getDate() + 1); }
+    h += '<div class="sl-cal-w"><span class="sl-lab">直近4週間（右下が今日）</span><div class="sl-cal">' + cal + '</div><span class="sl-leg">少<i class="lv1"></i><i class="lv2"></i><i class="lv3"></i>目標達成</span></div>';
+    h += '<div class="sl-prog">';
+    [['karimen', '仮免', K], ['honmen', '本免', H.concat(SG)]].forEach(function (x) {
+      var cv = cover(o, x[2]), ex = o.exams.filter(function (e) { return e.t === x[0]; }), last = ex.slice(-5), best = ex.reduce(function (m, e) { return Math.max(m, e.r); }, 0);
+      var ok2 = ex.length >= 2 && ex[ex.length - 1].r >= 90 && ex[ex.length - 2].r >= 90;
+      var miss = load(x[0]).length, un = cv.n - cv.c;
+      h += '<div class="sl-card"><h4>' + x[1] + 'の進み具合' + (ok2 ? '<span class="sl-ok">合格圏</span>' : '') + '</h4>' +
+        '<p class="sl-row"><span>解いた問題</span><b>' + cv.a + ' / ' + cv.n + '問</b></p><div class="sl-bar"><i style="width:' + (cv.a / cv.n * 100) + '%"></i></div>' +
+        '<p class="sl-row"><span>正解済み</span><b>' + cv.c + ' / ' + cv.n + '問</b></p><div class="sl-bar ok"><i style="width:' + (cv.c / cv.n * 100) + '%"></i></div>' +
+        '<p class="sl-row"><span>本番形式</span><b>' + (ex.length ? '最高 ' + best + '％' : 'まだ受けていません') + '</b></p>' +
+        (last.length ? '<div class="sl-ex">' + last.map(function (e) { return '<i class="' + (e.r >= 90 ? 'p' : '') + '" style="height:' + Math.max(8, e.r) + '%" title="' + e.r + '％"><em>' + e.r + '</em></i>'; }).join('') + '<span class="sl-line"></span></div>' : '') +
+        '<p class="sl-hint">' + (ok2 ? '本番形式で2回連続90％以上。合格圏です！' : '目安：本番形式で2回連続90％以上なら合格圏') + '</p>' +
+        '<div class="sl-acts">' + (miss ? '<button type="button" class="qz-btn ghost" data-go="' + x[0] + ':miss">前回まちがえた' + miss + '問を解く</button>' : '') +
+        (un ? '<button type="button" class="qz-btn ghost" data-unsolved="' + x[0] + '">まだ正解していない問題（' + un + '問）</button>' : '') + '</div></div>';
+    });
+    h += '</div>';
+    var sr = o.sg[0] ? Math.round(o.sg[1] / o.sg[0] * 100) : null;
+    h += '<p class="sl-sign">標識問題の正答率：<b>' + (sr === null ? 'まだ解いていません' : sr + '％（' + o.sg[1] + ' / ' + o.sg[0] + '問）') + '</b>' + (sr !== null && sr < 90 ? '　<a href="hyoushiki-ichiran.html">標識一覧で復習する ›</a>' : '') + '</p>';
+    h += '<p class="sl-note">※記録はこの端末のブラウザに保存されます。別の端末とは共有されず、ブラウザのデータを消すと記録も消えます。<button type="button" class="sl-reset" data-reset>記録をリセット</button></p></section>';
+    return h;
+  }
+
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function shuffle(a) { a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
   function mark(b) { return b === undefined ? '－' : (b ? '○' : '×'); }
@@ -33,13 +83,12 @@
 
   function home() {
     stopTimer(); st = null;
-    var h = '<div class="qz-home">';
+    var h = panel() + '<div class="qz-home">';
     ['karimen', 'honmen'].forEach(function (k) {
-      var T = TESTS[k], miss = load(k).length;
+      var T = TESTS[k];
       h += '<div class="qz-card"><h3>' + T.name + '</h3>' +
         '<button class="qz-btn" data-go="' + k + ':quick">かんたん練習（30問）<small>1問ごとに正解と解説</small></button>' +
         '<button class="qz-btn exam" data-go="' + k + ':exam">本番形式（' + (T.exam.textN + T.exam.kiken) + '問）<small>' + T.exam.desc + '</small></button>' +
-        (miss ? '<button class="qz-btn ghost" data-go="' + k + ':miss">前回まちがえた' + miss + '問だけ解く</button>' : '') +
         '</div>';
     });
     root.innerHTML = h + '</div><p class="qz-note">本番形式は、本番と同じ問題数・制限時間・合格点です。解答中は正解を表示せず、最後にまとめて採点します。</p>';
@@ -122,6 +171,7 @@
   function answer(v) {
     var it = ITEMS[st.list[st.i]], ok = judge(it, v);
     st.ans[it.id] = { v: v, ok: ok };
+    logAnswer(it.id, ok);
     if (st.exam) return next();
     if (it.type === 'ox') {
       root.querySelectorAll('.qz-ans .qz-ox').forEach(function (b) {
@@ -156,6 +206,7 @@
       if (a.ok) got += pts(it); else wrong.push(id);
     });
     var rate = Math.round(got / max * 100), pass = got / max >= 0.9;
+    if (st.exam) { var lo = lg(); lo.exams.push({ t: st.test, r: rate, d: dkey() }); lo.exams = lo.exams.slice(-40); lsave(lo); }
     if (typeof gtag === 'function') gtag('event', 'quiz_complete', { quiz_test: st.test, quiz_mode: st.mode, quiz_score: rate, quiz_pass: pass ? 'yes' : 'no', quiz_timeout: st.timeout ? 'yes' : 'no' });
     // 記録：まちがえた問題を追加し、正解した問題は外す
     var store = load(st.test);
@@ -221,6 +272,9 @@
     else if (b.hasAttribute('data-quit')) result();
     else if (b.hasAttribute('data-home')) { home(); top(); }
     else if (d.again === 'same') start(st.test, st.mode === 'miss' ? 'quick' : st.mode);
+    else if (d.goal) { var o = lg(); o.goal = +d.goal; lsave(o); home(); }
+    else if (d.unsolved) { start(d.unsolved, 'quick', shuffle(unsolved(d.unsolved)).slice(0, 30)); }
+    else if (b.hasAttribute('data-reset')) { if (window.confirm('学習記録をすべて消去します。よろしいですか？')) { try { localStorage.removeItem(LOGKEY); } catch (e) {} home(); } }
     else if (d.again === 'miss') start(st.test, 'miss', st.wrongNow);
   });
 
