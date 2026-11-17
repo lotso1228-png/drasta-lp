@@ -90,7 +90,7 @@
     ['karimen', 'honmen'].forEach(function (k) {
       var T = TESTS[k];
       h += '<div class="qz-card"><h3>' + T.name + '</h3>' +
-        '<button class="qz-btn" data-go="' + k + ':quick">かんたん練習（30問）<small>1問ごとに正解と解説</small></button>' +
+        '<button class="qz-btn" data-go="' + k + ':quick">かんたん練習（' + lg().goal + '問）<small>1日の目標と同じ問題数・1問ごとに正解と解説</small></button>' +
         '<button class="qz-btn exam" data-go="' + k + ':exam">本番形式（' + (T.exam.textN + T.exam.kiken) + '問）<small>' + T.exam.desc + '</small></button>' +
         '</div>';
     });
@@ -123,7 +123,7 @@
     stopTimer();
     var T = TESTS[test], ids;
     if (list) ids = shuffle(list);
-    else if (mode === 'quick') ids = mix(T.quick.from, T.quick.n, test + ':quick');
+    else if (mode === 'quick') ids = mix(T.quick.from, lg().goal, test + ':quick');
     else if (mode === 'miss') ids = shuffle(load(test));
     else ids = mix(T.exam.text, T.exam.textN, test + ':exam').concat(shuffle(D).slice(0, T.exam.kiken));
     if (!ids.length) return home();
@@ -276,7 +276,7 @@
     else if (b.hasAttribute('data-home')) { home(); top(); }
     else if (d.again === 'same') start(st.test, st.mode === 'miss' ? 'quick' : st.mode);
     else if (d.goal) { var o = lg(); o.goal = +d.goal; lsave(o); ga('study_goal_set', { study_goal: o.goal }); home(); }
-    else if (d.unsolved) { ga('study_review_unsolved', { quiz_test: d.unsolved }); start(d.unsolved, 'quick', shuffle(unsolved(d.unsolved)).slice(0, 30)); }
+    else if (d.unsolved) { ga('study_review_unsolved', { quiz_test: d.unsolved }); start(d.unsolved, 'quick', shuffle(unsolved(d.unsolved)).slice(0, lg().goal)); }
     else if (b.hasAttribute('data-reset')) { if (window.confirm('学習記録をすべて消去します。よろしいですか？')) { try { localStorage.removeItem(LOGKEY); } catch (e) {} ga('study_reset'); home(); } }
     else if (d.again === 'miss') start(st.test, 'miss', st.wrongNow);
   });
