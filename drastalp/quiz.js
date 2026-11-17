@@ -10,10 +10,11 @@
   var K = Object.keys(ITEMS).filter(function (k) { return k[0] === 'k'; });
   var H = Object.keys(ITEMS).filter(function (k) { return k[0] === 'h'; });
   var D = Object.keys(ITEMS).filter(function (k) { return k[0] === 'd'; });
+  var SG = K.filter(function (k) { return ITEMS[k].s; });   // 標識問題（仮免・本免の両方で出題）
 
   var TESTS = {
     karimen: { name: '仮免学科', quick: { n: 30, from: K }, exam: { text: K, textN: 50, kiken: 0, min: 30, desc: '50問・30分・45点以上で合格' } },
-    honmen: { name: '本免学科', quick: { n: 30, from: H }, exam: { text: K.concat(H), textN: 90, kiken: 5, min: 50, desc: '文章90問＋危険予測5問・50分・90点以上で合格' } }
+    honmen: { name: '本免学科', quick: { n: 30, from: H.concat(SG) }, exam: { text: K.concat(H), textN: 90, kiken: 5, min: 50, desc: '文章90問＋危険予測5問・50分・90点以上で合格' } }
   };
 
   var st = null, timer = null;
@@ -46,17 +47,24 @@
 
   // 答えが×の問題を、全体の25〜40％の範囲で毎回ちがう数だけ選ぶ
   var lastF = {};
-  function mix(pool, n, key) {
+  function pick(pool, n, f) {
     var F = shuffle(pool.filter(function (id) { return !ITEMS[id].a; }));
     var T = shuffle(pool.filter(function (id) { return ITEMS[id].a; }));
-    var lo = Math.max(Math.ceil(n * 0.25), n - T.length), hi = Math.min(Math.floor(n * 0.40), F.length);
+    f = Math.max(n - T.length, Math.min(f, F.length));
+    return F.slice(0, f).concat(T.slice(0, n - f));
+  }
+  // 標識問題は全体の約2割（10問に2問）を必ず含める
+  function mix(pool, n, key) {
+    var lo = Math.ceil(n * 0.25), hi = Math.floor(n * 0.40);
     var prev = lastF[key];
     if (prev === undefined) { try { prev = +sessionStorage.getItem('drasta-quiz-f-' + key); } catch (e) {} }
     var f, tries = 0;
     do { f = lo + Math.floor(Math.random() * (hi - lo + 1)); } while (hi > lo && f === prev && ++tries < 20);
     lastF[key] = f;
     try { sessionStorage.setItem('drasta-quiz-f-' + key, f); } catch (e) {}
-    return shuffle(F.slice(0, f).concat(T.slice(0, n - f)));
+    var sg = pool.filter(function (id) { return ITEMS[id].s; }), tx = pool.filter(function (id) { return !ITEMS[id].s; });
+    var ns = Math.min(sg.length, Math.round(n * 0.2)), fs = Math.round(f * ns / n);
+    return shuffle(pick(sg, ns, fs).concat(pick(tx, n - ns, f - fs)));
   }
 
   function start(test, mode, list) {
