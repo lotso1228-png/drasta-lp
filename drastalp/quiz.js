@@ -25,7 +25,7 @@
   function mark(b) { return b === undefined ? '－' : (b ? '○' : '×'); }
   function fig(it, small) { return '<figure class="qz-fig' + (small ? ' sm' : '') + '"><img src="' + it.img + '" alt="' + esc(it.scene) + '" width="400" height="300" loading="lazy" decoding="async"><figcaption>上から見た図（青い車が自車）</figcaption></figure>'; }
   function pts(it) { return it.type === 'kiken' ? 2 : 1; }
-  function sign(it) { return it.s ? '<img class="qz-sign" src="assets/signs/' + it.s + '.svg?v=1" alt="標識の図" width="120" height="120" decoding="async">' : ''; }
+  function sign(it) { return it.s ? '<img class="qz-sign" src="assets/signs/' + it.s + '.png?v=2" alt="標識の図" width="120" height="120" decoding="async">' : ''; }
   function top() { var y = root.getBoundingClientRect().top + window.scrollY - 90; if (Math.abs(window.scrollY - y) > 40) window.scrollTo({ top: y, behavior: 'smooth' }); }
   function stopTimer() { if (timer) { clearInterval(timer); timer = null; } }
   function fmt(s) { var m = Math.floor(s / 60), r = s % 60; return m + ':' + (r < 10 ? '0' : '') + r; }
