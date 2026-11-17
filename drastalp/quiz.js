@@ -6,7 +6,7 @@
   var ITEMS = {};
   Q.karimen.q.forEach(function (x, i) { ITEMS['k' + i] = { id: 'k' + i, type: 'ox', t: x.t, a: x.a, e: x.e }; });
   Q.honmen.q.forEach(function (x, i) { ITEMS['h' + i] = { id: 'h' + i, type: 'ox', t: x.t, a: x.a, e: x.e }; });
-  Q.kiken.forEach(function (x, i) { ITEMS['d' + i] = { id: 'd' + i, type: 'kiken', scene: x.scene, sub: x.sub, e: x.e }; });
+  Q.kiken.forEach(function (x, i) { ITEMS['d' + i] = { id: 'd' + i, type: 'kiken', img: 'assets/kiken/d' + i + '.svg?v=1', scene: x.scene, sub: x.sub, e: x.e }; });
   var K = Object.keys(ITEMS).filter(function (k) { return k[0] === 'k'; });
   var H = Object.keys(ITEMS).filter(function (k) { return k[0] === 'h'; });
   var D = Object.keys(ITEMS).filter(function (k) { return k[0] === 'd'; });
@@ -23,6 +23,7 @@
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function shuffle(a) { a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
   function mark(b) { return b === undefined ? '－' : (b ? '○' : '×'); }
+  function fig(it, small) { return '<figure class="qz-fig' + (small ? ' sm' : '') + '"><img src="' + it.img + '" alt="' + esc(it.scene) + '" width="400" height="300" loading="lazy" decoding="async"><figcaption>上から見た図（青い車が自車）</figcaption></figure>'; }
   function pts(it) { return it.type === 'kiken' ? 2 : 1; }
   function top() { var y = root.getBoundingClientRect().top + window.scrollY - 90; if (Math.abs(window.scrollY - y) > 40) window.scrollTo({ top: y, behavior: 'smooth' }); }
   function stopTimer() { if (timer) { clearInterval(timer); timer = null; } }
@@ -79,7 +80,7 @@
       h += '<p class="qz-q"><b>問' + (st.i + 1) + '</b>' + esc(it.t) + '</p>' +
         '<div class="qz-ans"><button class="qz-ox" data-pick="1" aria-label="正しい（○）">○</button><button class="qz-ox" data-pick="0" aria-label="誤り（×）">×</button></div>';
     } else {
-      h += '<p class="qz-q"><b>問' + (st.i + 1) + '　危険予測（2点）</b>' + esc(it.scene) + '<span class="qz-sub">この状況で、次のことに注意して運転する場合、それぞれ正しければ○、誤りなら×を選んでください。（3つすべて正解で2点）</span></p><ol class="qz-kk">';
+      h += '<p class="qz-q"><b>問' + (st.i + 1) + '　危険予測（2点）</b></p>' + fig(it) + '<p class="qz-q">' + esc(it.scene) + '<span class="qz-sub">この状況で、次のことに注意して運転する場合、それぞれ正しければ○、誤りなら×を選んでください。（3つすべて正解で2点）</span></p><ol class="qz-kk">';
       it.sub.forEach(function (s, j) {
         h += '<li><p>（' + (j + 1) + '）' + esc(s.t) + '</p><div class="qz-mini" role="group"><button class="qz-ox sm" data-sub="' + j + '" data-v="1" aria-label="（' + (j + 1) + '）○">○</button><button class="qz-ox sm" data-sub="' + j + '" data-v="0" aria-label="（' + (j + 1) + '）×">×</button></div></li>';
       });
@@ -169,7 +170,7 @@
       h = '<p class="qz-lq">' + esc(it.t) + '</p><p class="qz-lmeta">' + (onlyWrong ? '' : status) +
         '<span class="ng">あなたの答え：' + mark(a && a.v) + '</span><span class="ok">正解：' + mark(it.a) + '</span></p>';
     } else {
-      h = '<p class="qz-lq">【危険予測】' + esc(it.scene) + '</p>' + (onlyWrong ? '' : '<p class="qz-lmeta">' + status + '</p>') + '<ul class="qz-ksub">';
+      h = '<p class="qz-lq">【危険予測】' + esc(it.scene) + '</p>' + fig(it, true) + (onlyWrong ? '' : '<p class="qz-lmeta">' + status + '</p>') + '<ul class="qz-ksub">';
       it.sub.forEach(function (s, j) {
         var mine = a && a.v[j], bad = a && mine !== s.a;
         h += '<li class="' + (bad ? 'bad' : '') + '">（' + (j + 1) + '）' + esc(s.t) + '<span>あなた：' + mark(mine) + '　正解：' + mark(s.a) + '</span></li>';
