@@ -539,3 +539,14 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.cta-lg:focus-visible
   .ftr .fcol:nth-child(2){grid-row:span 2}
   .ftr .fnav a{display:block;padding:7px 0;min-height:0;justify-content:flex-start}
 }
+
+/* ガイドページ：文中リンクを押せるとわかる見た目に（2026-11） */
+.legal p a:not([class]),.legal li a:not([class]),.legal td a:not([class]),.legal th a:not([class]),.legal .faq .ans a{color:var(--blue-d);font-weight:700;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px;text-decoration-color:rgba(19,127,196,.45);border-radius:4px;transition:background-color .15s,text-decoration-color .15s}
+.legal p a:not([class]):hover,.legal li a:not([class]):hover,.legal td a:not([class]):hover,.legal th a:not([class]):hover,.legal .faq .ans a:hover{background:#e6f4fd;text-decoration-color:var(--blue-d)}
+.legal p a:not([class])::after,.legal li a:not([class])::after{content:"›";display:inline-block;margin-left:3px;font-weight:900;text-decoration:none}
+.legal .lcrumb a::after,.legal .guide-back a::after,.legal .src-list a::after{content:none}
+/* 練習問題へ進むボタン */
+.quiz-go{display:flex;align-items:center;justify-content:center;gap:10px;max-width:420px;margin:14px auto 8px;padding:16px 22px;border-radius:999px;background:linear-gradient(120deg,var(--blue),var(--navy));color:#fff;font-weight:800;font-size:16px;box-shadow:0 8px 18px rgba(14,92,158,.25);transition:transform .15s,box-shadow .15s}
+.quiz-go:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(14,92,158,.3)}
+.quiz-go small{display:block;font-size:12px;font-weight:700;opacity:.9}
+.quiz-go .arw{font-size:22px;line-height:1}
