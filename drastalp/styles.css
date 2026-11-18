@@ -618,3 +618,8 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.cta-lg:focus-visible
 .oy-cn{position:absolute;top:-10px;left:-6px;width:26px;height:26px;border-radius:50%;background:#1479b8;color:#fff;font-weight:900;font-size:13px;display:flex;align-items:center;justify-content:center}
 .oy-sum{background:#eaf6fd;border-radius:12px;padding:10px 14px;text-align:center;font-weight:700}
 @media(max-width:560px){.oy-cut{grid-template-columns:1fr}.oy-cc{display:grid;grid-template-columns:56px 1fr;column-gap:12px;text-align:left;align-items:center}.oy-cc svg{grid-row:span 2}.oy-cc b{align-self:end}.oy-cc p{align-self:start}}
+/* 記事の要点（AI検索・初めての方向け） */
+.aio-sum{border:1px solid #cfe6f6;background:#f2f9fe;border-radius:14px;padding:14px 16px 12px;margin:14px 0 22px}
+.legal .aio-sum .aio-h{font-weight:900;color:#0f5f99;font-size:14.5px;margin:0 0 6px}
+.legal .aio-sum ul{margin:0;padding:0}
+.legal .aio-sum li{font-size:14px;line-height:1.75;margin:4px 0}

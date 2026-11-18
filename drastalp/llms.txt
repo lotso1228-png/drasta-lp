@@ -1,0 +1,50 @@
+# ドラスタ自動車教習所
+
+> 大阪・奈良で普通自動車免許（AT）の取得をサポートする教習サービスです。教習所を卒業せずに試験場で直接受験する「一発試験（直接受験）」に向けた練習（仮免のコース練習・本免前の路上練習）を行っています。運営：株式会社KSS。
+
+- 所在地：奈良県橿原市曽我町（練習は奈良の提携練習場で実施）
+- アクセス：近鉄「大和八木」駅から練習場まで無料送迎（約10分）。鶴橋から大和八木駅まで近鉄特急で約24分
+- 対応する試験場：門真運転免許試験場・光明池運転免許試験場（大阪府）、奈良県運転免許センター（奈良県）
+- 料金：経験者コース 165,000円（仮免5時間＋本免10時間）、普通コース 231,000円（仮免15時間＋本免10時間）。税込・分割払い可。別途、試験場の手数料と取得時講習の費用がかかります
+- 営業時間：9:00〜17:00（平日・土日）
+- 予約・相談：LINE（https://lin.ee/uzNaNTY）
+
+## 費用・一発試験
+
+- [大阪で普通免許を安く取るなら](https://dorasuta-ds.com/osaka-menkyo-yasui): 費用を抑えられる理由（奈良の練習場と提携）と一発試験のメリット
+- [普通免許の費用比較](https://dorasuta-ds.com/menkyo-hiyou): 教習所・合宿・一発試験の費用と内訳
+- [一発試験とは](https://dorasuta-ds.com/ippatsu-shiken): 流れ・必要なもの・合格のコツ
+- [大阪の一発試験ガイド](https://dorasuta-ds.com/osaka-ippatsu-shiken): 門真・光明池の試験場、費用、予約
+- [奈良の一発試験ガイド](https://dorasuta-ds.com/nara-ippatsu-shiken): 奈良県運転免許センターの受験資格・予約・費用
+- [門真運転免許試験場 攻略ガイド](https://dorasuta-ds.com/kadoma-shikenjo)
+- [光明池運転免許試験場 攻略ガイド](https://dorasuta-ds.com/komyoike-shikenjo)
+
+## 学科試験の勉強
+
+- [学科試験 練習問題](https://dorasuta-ds.com/gakka-mogi): 仮免・本免の○×式問題（解説・模擬試験・標識問題・学習記録つき、無料）
+- [学科試験の要点まとめ（全分野）](https://dorasuta-ds.com/gakka-matome): 分野別の要点ページの一覧
+- [道路標識一覧（画像つき）](https://dorasuta-ds.com/hyoushiki-ichiran): 学科試験に出る標識65種
+- [学科試験に出る数字まとめ](https://dorasuta-ds.com/shiken-suuji)
+- [駐停車禁止の場所まとめ](https://dorasuta-ds.com/chuteisha-kinshi)
+- [信号・手信号・合図](https://dorasuta-ds.com/shingou-aizu)
+- [標識・標示](https://dorasuta-ds.com/hyoushiki)
+- [通行区分・車両通行帯・進路変更](https://dorasuta-ds.com/tsuukou-kubun)
+- [速度・徐行・車間距離](https://dorasuta-ds.com/sokudo)
+- [交差点の通行と優先関係](https://dorasuta-ds.com/kousaten)
+- [歩行者・子ども・高齢者などの保護](https://dorasuta-ds.com/hokousha)
+- [追い越し・追い抜き](https://dorasuta-ds.com/oikoshi)
+- [踏切の通過](https://dorasuta-ds.com/fumikiri)
+- [緊急自動車・路線バスの優先](https://dorasuta-ds.com/kinkyu-bus)
+- [灯火・夜間・悪天候・坂道](https://dorasuta-ds.com/touka-tenkou)
+- [運転者の義務・免許制度](https://dorasuta-ds.com/unten-gimu)
+- [高速道路の通行](https://dorasuta-ds.com/kosoku)
+- [事故・故障・災害のときの措置](https://dorasuta-ds.com/jiko)
+- [点検・積載・けん引](https://dorasuta-ds.com/tenken-sekisai)
+- [危険予測（イラスト問題）の解き方](https://dorasuta-ds.com/kiken-yosoku)
+
+## その他
+
+- [トップページ](https://dorasuta-ds.com/): コース・料金・よくある質問
+- [保護者の方へ](https://dorasuta-ds.com/guardian)
+- [プライバシーポリシー](https://dorasuta-ds.com/privacy)
+- [特定商取引法に基づく表記](https://dorasuta-ds.com/tokushoho)
