@@ -584,3 +584,31 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.cta-lg:focus-visible
 .sl-note{font-size:11.5px;color:#6b7b87;margin:10px 0 0;line-height:1.7}
 .sl-reset{border:0;background:none;color:#8a97a1;text-decoration:underline;font-size:11.5px;cursor:pointer;margin-left:6px;padding:0}
 @media(max-width:600px){.sl-prog{grid-template-columns:1fr}}
+/* 大阪で免許を安く取るなら：図解 */
+.oy-pts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0 8px}
+.oy-pt{display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px;padding:14px 8px;border:1px solid #e3edf5;border-radius:14px;background:#fff}
+.oy-pt svg{width:52px;height:52px}.oy-pt b{font-size:14.5px;font-weight:900;color:#1a2b38}.oy-pt span{font-size:12px;line-height:1.6;color:#4a5a66}
+.oy-bars{margin:14px 0 6px;padding:14px 12px 8px;border:1px solid #e3edf5;border-radius:14px;background:#fff}
+.oy-bar,.oy-axis{display:grid;grid-template-columns:78px 1fr 96px;align-items:center;gap:8px;margin-bottom:10px}
+.oy-bl{font-size:12.5px;font-weight:800;color:#3b4b57}.oy-bv{font-size:12.5px;color:#3b4b57}.oy-bv b{color:#1479b8}
+.oy-track{position:relative;height:22px;background:repeating-linear-gradient(90deg,#eef3f7 0 calc(25% - 1px),#dbe5ec calc(25% - 1px) 25%);border-radius:6px}
+.oy-track i{position:absolute;top:0;bottom:0;border-radius:6px}.oy-track i.gray{background:#a9b6c1}.oy-track i.blue{background:linear-gradient(90deg,#1f9fe0,#1479b8)}
+.oy-axis{margin:0}.oy-axis div{position:relative;height:14px}.oy-axis em{position:absolute;white-space:nowrap;transform:translateX(-50%);font-style:normal;font-size:10.5px;color:#7a8893}
+.oy-why{display:grid;grid-template-columns:1fr 24px 1fr;gap:6px;align-items:stretch;margin:14px 0}
+.oy-col{background:#f6f8fa;border-radius:14px;padding:12px 10px;display:flex;flex-direction:column;gap:6px}
+.oy-ct{font-weight:900;font-size:14px;text-align:center;margin:0 0 2px;color:#5a6b78}.oy-ct.blue{color:#1479b8}
+.oy-box{background:#fff;border:1px solid #dfe6ec;border-radius:10px;padding:8px;font-size:12.5px;font-weight:700;text-align:center}
+.oy-box.blue{border-color:#bfe0f5}
+.oy-res{margin:auto 0 0;padding:8px;border-radius:10px;font-size:12.5px;font-weight:900;text-align:center;color:#fff}.oy-res.gray{background:#a9b6c1}.oy-res.blue{background:#1479b8}
+.oy-arrow{display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:900;color:#1f9fe0}
+.oy-ph{margin:14px 0}.oy-ph img{width:100%;height:auto;border-radius:14px;display:block}.oy-ph figcaption{font-size:12px;color:#5a6b78;text-align:center;margin-top:6px}
+.oy-fh{margin-top:22px}
+.legal ol.oy-flow{list-style:none;padding:0;margin:12px 0}
+.legal ol.oy-flow li{position:relative;display:grid;grid-template-columns:40px 1fr;column-gap:12px;padding:0 0 18px;margin:0}
+.legal ol.oy-flow li::before{content:"";position:absolute;left:19px;top:38px;bottom:2px;width:2px;background:#bfe0f5}
+.legal ol.oy-flow li.goal::before{display:none}
+.oy-n{grid-row:span 2;width:38px;height:38px;border-radius:50%;background:#1f9fe0;color:#fff;font-weight:900;display:flex;align-items:center;justify-content:center;font-size:15px}
+.goal .oy-n{background:#f08c00}
+.oy-flow b{font-size:14.5px;align-self:end}.oy-flow small{font-size:12.5px;color:#5a6b78}
+@media(max-width:560px){.oy-pts{grid-template-columns:1fr}.oy-pt{display:grid;grid-template-columns:52px 1fr;column-gap:12px;row-gap:2px;text-align:left;padding:12px;align-items:center}.oy-pt svg{grid-row:span 2}.oy-pt b{align-self:end}.oy-pt span{align-self:start}
+.oy-why{grid-template-columns:1fr}.oy-arrow{transform:rotate(90deg);height:24px}.oy-bar,.oy-axis{grid-template-columns:64px 1fr 84px}}
