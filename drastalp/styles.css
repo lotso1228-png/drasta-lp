@@ -621,5 +621,6 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.cta-lg:focus-visible
 /* 記事の要点（AI検索・初めての方向け） */
 .aio-sum{border:1px solid #cfe6f6;background:#f2f9fe;border-radius:14px;padding:14px 16px 12px;margin:14px 0 22px}
 .legal .aio-sum .aio-h{font-weight:900;color:#0f5f99;font-size:14.5px;margin:0 0 6px}
-.legal .aio-sum ul{margin:0;padding:0}
-.legal .aio-sum li{font-size:14px;line-height:1.75;margin:4px 0}
+.legal .aio-sum ul{margin:0;padding:0;list-style:none}
+.legal .aio-sum li{position:relative;padding-left:16px;font-size:14px;line-height:1.75;margin:4px 0}
+.legal .aio-sum li::before{content:"";position:absolute;left:2px;top:10px;width:6px;height:6px;border-radius:50%;background:#1f9fe0}
