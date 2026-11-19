@@ -647,3 +647,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.cta-lg:focus-visible
 .hs-dots button{width:9px;height:9px;padding:0;border:0;border-radius:50%;background:rgba(255,255,255,.6);cursor:pointer}
 .hs-dots button.on{background:#fff;width:22px;border-radius:9px}
 @media(max-width:860px){.hero-photo.hs{height:auto;aspect-ratio:3/2}.hs-nav{width:32px;height:32px;font-size:20px}}
+.hs-cap{position:absolute;left:0;right:0;bottom:0;padding:44px 22px 34px;background:linear-gradient(transparent,rgba(8,30,48,.78));color:#fff}
+.hs-cap b{display:block;font-size:22px;font-weight:900;line-height:1.35;letter-spacing:.02em;text-shadow:0 1px 6px rgba(0,0,0,.35)}
+.hs-cap span{display:block;font-size:13.5px;font-weight:700;line-height:1.6;margin-top:4px;opacity:.95}
+@media(max-width:860px){.hs-cap{padding:30px 16px 28px}.hs-cap b{font-size:17px}.hs-cap span{font-size:12px}}
