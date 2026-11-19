@@ -36,7 +36,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700;800;900&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=23">
+<link rel="stylesheet" href="styles.css?v=24">
 <noscript><style>.reveal{opacity:1 !important;transform:none !important}</style></noscript>
 <script type="application/ld+json">
 {
@@ -562,6 +562,6 @@
 </div>
 
 <script src="main.js?v=16"></script>
-<script>(function(){var g=document.querySelector(".place-g");if(!g)return;var w=g.parentNode;function s(d){var f=g.children[0];g.scrollBy({left:d*(f.offsetWidth+12),behavior:"smooth"});}w.querySelector(".pl-nav.prev").onclick=function(){s(-1)};w.querySelector(".pl-nav.next").onclick=function(){s(1)};})();</script>
+<script>(function(){var g=document.querySelector(".place-g");if(!g)return;var w=g.parentNode,it=g.children,n=it.length,d=document.createElement("div");d.className="pl-dots";for(var i=0;i<n;i++){var b=document.createElement("button");b.type="button";b.dataset.i=i;b.setAttribute("aria-label",(i+1)+"枚目の写真");d.appendChild(b);}w.appendChild(d);function step(){return it[0].offsetWidth+parseFloat(getComputedStyle(g).columnGap||12);}function cur(){return Math.round(g.scrollLeft/step());}function go(i){i=Math.max(0,Math.min(n-1,i));g.scrollTo({left:it[i].offsetLeft-it[0].offsetLeft-(g.clientWidth-it[i].offsetWidth)*(innerWidth<=700?.5:0),behavior:"smooth"});}function mark(){var c=Math.min(n-1,Math.round(g.scrollLeft/step()));if(g.scrollLeft+g.clientWidth>=g.scrollWidth-4)c=n-1;[].forEach.call(d.children,function(b,j){b.classList.toggle("on",j===c);});}g.addEventListener("scroll",function(){clearTimeout(g._t);g._t=setTimeout(mark,60);});w.querySelector(".pl-nav.prev").onclick=function(){go(cur()-1)};w.querySelector(".pl-nav.next").onclick=function(){go(cur()+1)};d.onclick=function(e){if(e.target.dataset.i)go(+e.target.dataset.i);};mark();})();</script>
 </body>
 </html>
