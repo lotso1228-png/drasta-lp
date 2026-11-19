@@ -36,7 +36,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700;800;900&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=22">
+<link rel="stylesheet" href="styles.css?v=23">
 <noscript><style>.reveal{opacity:1 !important;transform:none !important}</style></noscript>
 <script type="application/ld+json">
 {
@@ -266,13 +266,14 @@
 <section class="sec reveal" id="place">
   <h2 class="sttl"><span>練習場の様子</span></h2>
   <p class="place-lead">奈良の提携練習場で、試験に合わせた練習ができます。<br>S字・クランク・踏切・信号のある交差点など、試験に出る課題がそろっています。</p>
+  <div class="place-w"><button type="button" class="pl-nav prev" aria-label="前の写真"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button type="button" class="pl-nav next" aria-label="次の写真"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
   <div class="place-g">
     <figure><img src="assets/site/course-cars.jpg" alt="練習用の車両を複数台用意" width="1600" height="900" loading="lazy" decoding="async"></figure>
     <figure><img src="assets/site/course-wide.jpg" alt="広い練習コース" width="1600" height="900" loading="lazy" decoding="async"></figure>
     <figure><img src="assets/site/course-s.jpg" alt="S字・クランクも本番さながらに練習" width="1600" height="900" loading="lazy" decoding="async"></figure>
     <figure><img src="assets/site/course-fumikiri.jpg" alt="踏切の通過も練習できます" width="1600" height="900" loading="lazy" decoding="async"></figure>
     <figure><img src="assets/site/course-cross.jpg" alt="信号・標識のある交差点" width="1600" height="900" loading="lazy" decoding="async"></figure>
-  </div>
+  </div></div>
 </section>
 
 <section class="sec reveal stagger" id="reasons">
@@ -561,5 +562,6 @@
 </div>
 
 <script src="main.js?v=16"></script>
+<script>(function(){var g=document.querySelector(".place-g");if(!g)return;var w=g.parentNode;function s(d){var f=g.children[0];g.scrollBy({left:d*(f.offsetWidth+12),behavior:"smooth"});}w.querySelector(".pl-nav.prev").onclick=function(){s(-1)};w.querySelector(".pl-nav.next").onclick=function(){s(1)};})();</script>
 </body>
 </html>

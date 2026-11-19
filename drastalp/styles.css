@@ -634,3 +634,12 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.cta-lg:focus-visible
 .place-g img{display:block;width:100%;height:100%;object-fit:cover;aspect-ratio:16/10}
 .place-g figcaption{position:absolute;left:0;right:0;bottom:0;padding:22px 12px 9px;font-size:13px;font-weight:800;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.6))}
 @media(max-width:700px){.place-g figure:last-child{grid-column:auto}.place-g{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;padding:0 16px 8px;margin:0 -16px}.place-g figure{flex:0 0 82%;scroll-snap-align:center}.place-g figure:first-child{grid-column:auto;grid-row:auto}}
+
+/* 練習場の様子：PCも横スクロール */
+.place-w{position:relative;max-width:1080px;margin:0 auto}
+.place-g{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;scrollbar-width:none;max-width:none}
+.place-g::-webkit-scrollbar{display:none}
+.place-g figure,.place-g figure:first-child,.place-g figure:last-child{flex:0 0 calc((100% - 24px)/2.4);grid-column:auto;grid-row:auto;scroll-snap-align:start}
+.pl-nav{position:absolute;top:50%;transform:translateY(-50%);z-index:2;width:44px;height:44px;border:0;border-radius:50%;background:rgba(255,255,255,.95);color:#1479b8;display:grid;place-items:center;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.18)}
+.pl-nav.prev{left:-14px}.pl-nav.next{right:-14px}
+@media(max-width:700px){.place-g figure,.place-g figure:first-child,.place-g figure:last-child{flex:0 0 82%;scroll-snap-align:center}.pl-nav{display:none}}
