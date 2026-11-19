@@ -624,3 +624,18 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.cta-lg:focus-visible
 .legal .aio-sum ul{margin:0;padding:0;list-style:none}
 .legal .aio-sum li{position:relative;padding-left:16px;font-size:14px;line-height:1.75;margin:4px 0}
 .legal .aio-sum li::before{content:"";position:absolute;left:2px;top:10px;width:6px;height:6px;border-radius:50%;background:#1f9fe0}
+/* ファーストビュー：実際の練習コースの写真 */
+.hero-bg .hero-real{position:absolute;inset:0;background:linear-gradient(90deg,rgba(238,247,253,.9) 0%,rgba(238,247,253,.74) 45%,rgba(238,247,253,.4) 100%),url(assets/site/course-wide.jpg) center 60%/cover no-repeat}
+.hero-bg .hero-real::after{content:"実際の練習コース（奈良）";position:absolute;right:14px;bottom:62px;font-size:11.5px;font-weight:700;color:#fff;background:rgba(15,40,60,.55);padding:4px 10px;border-radius:99px}
+@media(max-width:860px){.hero-bg .hero-real{background:linear-gradient(180deg,rgba(238,247,253,.5) 0%,rgba(238,247,253,.88) 40%,rgba(238,247,253,.93) 100%),url(assets/site/course-wide.jpg) center top/cover no-repeat}.hero-bg .hero-real::after{top:auto;bottom:62px}}
+.hero-bg .orb{opacity:.28}
+.hero-bg .grid-glow{display:none}
+/* 練習場の様子 */
+.place-lead{text-align:center;color:#41525d;line-height:1.8;margin:0 auto 18px;max-width:640px}
+.place-g{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:1080px;margin:0 auto}
+.place-g figure{margin:0;position:relative;border-radius:14px;overflow:hidden;background:#dfe7ee}
+.place-g figure:first-child{grid-column:span 2;grid-row:span 2}
+.place-g figure:last-child{grid-column:span 2}
+.place-g img{display:block;width:100%;height:100%;object-fit:cover;aspect-ratio:16/10}
+.place-g figcaption{position:absolute;left:0;right:0;bottom:0;padding:22px 12px 9px;font-size:13px;font-weight:800;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.6))}
+@media(max-width:700px){.place-g figure:last-child{grid-column:auto}.place-g{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;padding:0 16px 8px;margin:0 -16px}.place-g figure{flex:0 0 82%;scroll-snap-align:center}.place-g figure:first-child{grid-column:auto;grid-row:auto}}
