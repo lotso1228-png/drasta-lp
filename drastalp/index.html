@@ -36,7 +36,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700;800;900&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=40">
+<link rel="stylesheet" href="styles.css?v=43">
 <noscript><style>.reveal{opacity:1 !important;transform:none !important}</style></noscript>
 <script type="application/ld+json">
 {
@@ -255,10 +255,10 @@
       <div class="hero-photo hs" role="region" aria-roledescription="carousel" aria-label="練習場の写真">
         <div class="hs-track">
         <figure class="hs-i"><img src="assets/photo-top.jpg?v=20261104" alt="車内でミラーを調整する受講生のイメージ" width="1600" height="1066" fetchpriority="high" decoding="async"></figure>
-        <figure class="hs-i"><img src="assets/site/course-wide.jpg" alt="実際の練習コース（奈良）" width="1600" height="900" loading="lazy" decoding="async"><div class="hs-cap"><b>奈良の提携練習場で練習</b><span>自前の校舎を持たない運営だから、料金を抑えられます</span></div></figure>
-        <figure class="hs-i"><img src="assets/site/course-s.jpg" alt="S字・クランクの練習" width="1600" height="900" loading="lazy" decoding="async"><div class="hs-cap"><b>試験の課題をそのまま練習</b><span>S字・クランクも、試験場の採点基準に合わせて練習</span></div></figure>
-        <figure class="hs-i"><img src="assets/site/course-fumikiri.jpg" alt="踏切の練習" width="1600" height="900" loading="lazy" decoding="async"><div class="hs-cap"><b>踏切・信号のある交差点も</b><span>仮免の技能試験に出る課題がそろっています</span></div></figure>
-        <figure class="hs-i"><img src="assets/site/course-cars.jpg" alt="練習用の車両" width="1600" height="900" loading="lazy" decoding="async"><div class="hs-cap"><b>練習用の車両を用意</b><span>車がなくても、本免前の路上練習までサポート</span></div></figure>
+        <div class="hs-i hs-bn b1"><div class="bn-txt"><span class="bn-pt">POINT 1</span><p class="bn-t">費用を抑えて<br>免許が取れる</p><p class="bn-s">教習料金 <strong>165,000円〜</strong><br>分割払いもOK</p></div><div class="bn-ill"><img class="bn-i1" src="assets/asset_058_2.png" alt="" loading="lazy"><img class="bn-i2" src="assets/asset_081_2.png" alt="" loading="lazy"></div></div>
+        <div class="hs-i hs-bn b2"><div class="bn-txt"><span class="bn-pt">POINT 2</span><p class="bn-t">予約も連絡も<br>LINEだけ</p><p class="bn-s">24時間いつでも送信OK<br>授業やバイトの合間に</p></div><div class="bn-ill"><img class="bn-i1" src="assets/asset_056_2.png" alt="" loading="lazy"><img class="bn-i2" src="assets/asset_076_2.png" alt="" loading="lazy"></div></div>
+        <div class="hs-i hs-bn b3"><div class="bn-txt"><span class="bn-pt">POINT 3</span><p class="bn-t">大和八木駅から<br>無料送迎</p><p class="bn-s">鶴橋から特急約24分<br>大阪からも通いやすい</p></div><div class="bn-ill"><img class="bn-i1" src="assets/asset_050_2.png" alt="" loading="lazy"><img class="bn-i2" src="assets/asset_047_2.png" alt="" loading="lazy"></div></div>
+        <div class="hs-i hs-bn b4"><div class="bn-txt"><span class="bn-pt">POINT 4</span><p class="bn-t">一発試験の<br>合格までサポート</p><p class="bn-s">仮免のコース練習から<br>本免前の路上練習まで</p></div><div class="bn-ill"><img class="bn-i1" src="assets/asset_048_2.png" alt="" loading="lazy"><img class="bn-i2" src="assets/asset_060_2.png" alt="" loading="lazy"></div></div>
         </div>
         <button type="button" class="hs-nav prev" aria-label="前の写真"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button type="button" class="hs-nav next" aria-label="次の写真"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         <div class="hs-dots"></div>
@@ -574,8 +574,8 @@
 <script>
 (function(){var w=document.querySelector('.hs');if(!w)return;var t=w.querySelector('.hs-track'),it=t.children,d=w.querySelector('.hs-dots'),n=it.length,cur=0,tm;
 for(var i=0;i<n;i++){var b=document.createElement('button');b.type='button';b.setAttribute('aria-label',(i+1)+'枚目の写真');b.dataset.i=i;d.appendChild(b);}
-function go(i){cur=(i+n)%n;t.scrollTo({left:t.clientWidth*cur,behavior:'smooth'});}
-function mark(){cur=Math.round(t.scrollLeft/t.clientWidth);[].forEach.call(d.children,function(b,j){b.classList.toggle('on',j===cur);});}
+var busy=0;function go(i){cur=(i+n)%n;busy=Date.now()+900;t.scrollTo({left:t.clientWidth*cur,behavior:'smooth'});dots();}function dots(){[].forEach.call(d.children,function(b,j){b.classList.toggle('on',j===cur);});}
+function mark(){if(Date.now()<busy)return;cur=Math.round(t.scrollLeft/t.clientWidth);dots();}
 t.addEventListener('scroll',function(){clearTimeout(t._s);t._s=setTimeout(mark,80);});
 w.querySelector('.prev').onclick=function(){go(cur-1);stop();};w.querySelector('.next').onclick=function(){go(cur+1);stop();};
 d.onclick=function(e){if(e.target.dataset.i){go(+e.target.dataset.i);stop();}};
