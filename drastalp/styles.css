@@ -683,5 +683,5 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.cta-lg:focus-visible
 .bn-ck li::before{width:3.6cqw;height:3.6cqw;line-height:3.6cqw;font-size:2.2cqw;top:.3cqw}
 @media(max-width:860px){.hs-bn{padding:0 5cqw 7.5cqw}.bn-t{font-size:6.4cqw;margin:1.6cqw 0 1.8cqw}.np .bn-t{font-size:7.6cqw}.bn-pt{font-size:2.6cqw;padding:.8cqw 2.8cqw}.bn-ck li{font-size:3.1cqw;padding-left:5cqw}.bn-ck li::before{width:3.6cqw;height:3.6cqw;line-height:3.6cqw;font-size:2.2cqw}}
 .hs-bn .bn-txt{flex:none}
-.hs-bn{padding:0 10cqw 7.5cqw!important}.bnr3 .bn-ph{object-position:center 70%}
+.hs-bn{padding:0 10cqw 7.5cqw!important}.b3 .bn-ph{object-position:center 70%}
 .hs-bn .bn-t{font-size:5.8cqw!important;white-space:nowrap}.hs-bn.np .bn-t{font-size:7cqw!important}
