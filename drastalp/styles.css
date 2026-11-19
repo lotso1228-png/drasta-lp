@@ -641,7 +641,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.cta-lg:focus-visible
 .hs .hs-i{flex:0 0 100%;height:100%;margin:0;position:relative;scroll-snap-align:start}
 .hs .hs-i img{width:100%;height:100%;object-fit:cover;object-position:center;animation:none}
 .hs figcaption{position:absolute;left:14px;bottom:40px;font-size:12.5px;font-weight:800;color:#fff;background:rgba(15,40,60,.6);padding:5px 12px;border-radius:99px}
-.hs-nav{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:38px;height:38px;border:0;border-radius:50%;background:rgba(255,255,255,.9);color:#1479b8;font-size:24px;font-weight:900;line-height:1;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.15)}
+.hs-nav{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:38px;height:38px;padding:0;display:flex;align-items:center;justify-content:center;border:0;border-radius:50%;background:rgba(255,255,255,.9);color:#1479b8;font-size:24px;font-weight:900;line-height:1;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.15)}
 .hs-nav.prev{left:10px}.hs-nav.next{right:10px}
 .hs-dots{position:absolute;left:0;right:0;bottom:12px;display:flex;justify-content:center;gap:7px;z-index:3}
 .hs-dots button{width:9px;height:9px;padding:0;border:0;border-radius:50%;background:rgba(255,255,255,.6);cursor:pointer}
