@@ -624,12 +624,6 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.cta-lg:focus-visible
 .legal .aio-sum ul{margin:0;padding:0;list-style:none}
 .legal .aio-sum li{position:relative;padding-left:16px;font-size:14px;line-height:1.75;margin:4px 0}
 .legal .aio-sum li::before{content:"";position:absolute;left:2px;top:10px;width:6px;height:6px;border-radius:50%;background:#1f9fe0}
-/* ファーストビュー：実際の練習コースの写真 */
-.hero-bg .hero-real{position:absolute;inset:0;background:linear-gradient(90deg,rgba(238,247,253,.9) 0%,rgba(238,247,253,.74) 45%,rgba(238,247,253,.4) 100%),url(assets/site/course-wide.jpg) center 60%/cover no-repeat}
-.hero-bg .hero-real::after{content:"実際の練習コース（奈良）";position:absolute;right:14px;bottom:62px;font-size:11.5px;font-weight:700;color:#fff;background:rgba(15,40,60,.55);padding:4px 10px;border-radius:99px}
-@media(max-width:860px){.hero-bg .hero-real{background:linear-gradient(180deg,rgba(238,247,253,.5) 0%,rgba(238,247,253,.88) 40%,rgba(238,247,253,.93) 100%),url(assets/site/course-wide.jpg) center top/cover no-repeat}.hero-bg .hero-real::after{top:auto;bottom:62px}}
-.hero-bg .orb{opacity:.28}
-.hero-bg .grid-glow{display:none}
 /* 練習場の様子 */
 .place-lead{text-align:center;color:#41525d;line-height:1.8;margin:0 auto 18px;max-width:640px}
 .place-g{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:1080px;margin:0 auto}
@@ -639,3 +633,13 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.cta-lg:focus-visible
 .place-g img{display:block;width:100%;height:100%;object-fit:cover;aspect-ratio:16/10}
 .place-g figcaption{position:absolute;left:0;right:0;bottom:0;padding:22px 12px 9px;font-size:13px;font-weight:800;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.6))}
 @media(max-width:700px){.place-g figure:last-child{grid-column:auto}.place-g{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;padding:0 16px 8px;margin:0 -16px}.place-g figure{flex:0 0 82%;scroll-snap-align:center}.place-g figure:first-child{grid-column:auto;grid-row:auto}}
+
+/* ファーストビュー：写真のスライド（受講生→実際の練習コース） */
+.hero-photo.hs{display:block}
+.hs .hs-i{position:absolute;inset:0;margin:0;opacity:0;animation:hsfade 25s infinite}
+.hs .hs-i:nth-child(1){animation-delay:0s}.hs .hs-i:nth-child(2){animation-delay:5s}.hs .hs-i:nth-child(3){animation-delay:10s}.hs .hs-i:nth-child(4){animation-delay:15s}.hs .hs-i:nth-child(5){animation-delay:20s}
+.hs .hs-i img{width:100%;height:100%;object-fit:cover;animation:none}
+.hs figcaption{position:absolute;left:14px;bottom:14px;font-size:12.5px;font-weight:800;color:#fff;background:rgba(15,40,60,.6);padding:5px 12px;border-radius:99px}
+@keyframes hsfade{0%{opacity:0;transform:scale(1.04)}4%{opacity:1}20%{opacity:1}24%{opacity:0}100%{opacity:0;transform:scale(1)}}
+.hs .hs-i:nth-child(1){opacity:1}
+@media(prefers-reduced-motion:reduce){.hs .hs-i{animation:none}.hs .hs-i:not(:first-child){display:none}}
