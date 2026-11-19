@@ -36,7 +36,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700;800;900&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=37">
+<link rel="stylesheet" href="styles.css?v=38">
 <noscript><style>.reveal{opacity:1 !important;transform:none !important}</style></noscript>
 <script type="application/ld+json">
 {
@@ -252,12 +252,16 @@
       </div>
     </div>
     <div class="hero-media" id="heroMedia">
-      <div class="hero-photo hs">
-        <figure class="hs-i"><img src="assets/photo-top.jpg?v=20261104" alt="車内でミラーを調整する受講生のイメージ" width="1600" height="1066" fetchpriority="high" decoding="async"></figure>
+      <div class="hero-photo hs" role="region" aria-roledescription="carousel" aria-label="練習場の写真">
+        <div class="hs-track">
+        <figure class="hs-i"><img src="assets/photo-top.jpg?v=20261104" alt="車内でミラーを調整する受講生のイメージ" width="1600" height="1066" fetchpriority="high" decoding="async"><figcaption>練習の様子</figcaption></figure>
         <figure class="hs-i"><img src="assets/site/course-wide.jpg" alt="実際の練習コース（奈良）" width="1600" height="900" loading="lazy" decoding="async"><figcaption>実際の練習コース（奈良）</figcaption></figure>
         <figure class="hs-i"><img src="assets/site/course-s.jpg" alt="S字・クランクの練習" width="1600" height="900" loading="lazy" decoding="async"><figcaption>S字・クランクの練習</figcaption></figure>
         <figure class="hs-i"><img src="assets/site/course-fumikiri.jpg" alt="踏切の練習" width="1600" height="900" loading="lazy" decoding="async"><figcaption>踏切の練習</figcaption></figure>
         <figure class="hs-i"><img src="assets/site/course-cars.jpg" alt="練習用の車両" width="1600" height="900" loading="lazy" decoding="async"><figcaption>練習用の車両</figcaption></figure>
+        </div>
+        <button type="button" class="hs-nav prev" aria-label="前の写真">‹</button><button type="button" class="hs-nav next" aria-label="次の写真">›</button>
+        <div class="hs-dots"></div>
       </div>
     </div>
   </div>
@@ -567,5 +571,18 @@
 </div>
 
 <script src="main.js?v=16"></script>
+<script>
+(function(){var w=document.querySelector('.hs');if(!w)return;var t=w.querySelector('.hs-track'),it=t.children,d=w.querySelector('.hs-dots'),n=it.length,cur=0,tm;
+for(var i=0;i<n;i++){var b=document.createElement('button');b.type='button';b.setAttribute('aria-label',(i+1)+'枚目の写真');b.dataset.i=i;d.appendChild(b);}
+function go(i){cur=(i+n)%n;t.scrollTo({left:t.clientWidth*cur,behavior:'smooth'});}
+function mark(){cur=Math.round(t.scrollLeft/t.clientWidth);[].forEach.call(d.children,function(b,j){b.classList.toggle('on',j===cur);});}
+t.addEventListener('scroll',function(){clearTimeout(t._s);t._s=setTimeout(mark,80);});
+w.querySelector('.prev').onclick=function(){go(cur-1);stop();};w.querySelector('.next').onclick=function(){go(cur+1);stop();};
+d.onclick=function(e){if(e.target.dataset.i){go(+e.target.dataset.i);stop();}};
+function stop(){clearInterval(tm);}
+t.addEventListener('pointerdown',stop);t.addEventListener('touchstart',stop,{passive:true});
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches)tm=setInterval(function(){go(cur+1);},5000);
+mark();})();
+</script>
 </body>
 </html>
