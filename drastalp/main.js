@@ -160,6 +160,14 @@
 document.addEventListener('click', function (e) {
   var a = e.target.closest && e.target.closest('a[href*="lin.ee"]');
   if (!a || typeof gtag !== 'function') return;
-  var where = a.closest('.mobilebar') ? 'mobile_bar' : a.closest('.hdr') ? 'header' : a.closest('.guide-cta') ? 'guide_bottom' : 'page';
+  // ボタンの種類 → 計測名（上から順に判定）
+  var map = [
+    ['.hdr-cta', 'header'], ['.mm-cta', 'menu'], ['.mb-line', 'mobile_bar'], ['.mobilebar', 'mobile_bar'],
+    ['.float-cta', 'float'], ['.cta-mid', 'price'], ['.fstep-link', 'flow'], ['.faq-more', 'faq'],
+    ['.pulse', 'bottom'], ['.guide-cta', 'guide_bottom'], ['.hdr', 'header']
+  ];
+  var where = '';
+  for (var i = 0; i < map.length && !where; i++) { if (a.matches(map[i][0]) || a.closest(map[i][0])) where = map[i][1]; }
+  if (!where) { var s = a.closest('section[id]'); where = s ? (s.id === 'top' || s.id === 'hero' ? 'hero' : s.id) : 'page'; }
   gtag('event', 'line_click', { link_location: where, page_path: location.pathname });
 });

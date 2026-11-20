@@ -561,7 +561,7 @@
   <a class="mb-line" href="https://lin.ee/uzNaNTY" target="_blank" rel="noopener noreferrer" aria-label="LINEで友だち追加して無料相談する（新しいタブで開きます）"><span class="linechip">LINE</span>無料相談</a>
 </div>
 
-<script src="main.js?v=16"></script>
+<script src="main.js?v=17"></script>
 <script>(function(){var g=document.querySelector(".place-g");if(!g)return;var w=g.parentNode,it=g.children,n=it.length,d=document.createElement("div");d.className="pl-dots";w.appendChild(d);function pos(i){var m=g.scrollWidth-g.clientWidth,x=it[i].offsetLeft-it[0].offsetLeft-(g.clientWidth-it[i].offsetWidth)*(innerWidth<=700?.5:0);return Math.max(0,Math.min(m,x));}function stops(){var a=[];for(var i=0;i<n;i++){var p=pos(i);if(!a.length||p-a[a.length-1]>4)a.push(p);}return a;}function near(a){var k=0;for(var i=1;i<a.length;i++)if(Math.abs(a[i]-g.scrollLeft)<Math.abs(a[k]-g.scrollLeft))k=i;return k;}function build(){var a=stops();if(d.children.length===a.length)return;d.innerHTML="";for(var i=0;i<a.length;i++){var b=document.createElement("button");b.type="button";b.dataset.i=i;b.setAttribute("aria-label",(i+1)+"番目の写真へ");d.appendChild(b);}}function mark(){build();var c=near(stops());[].forEach.call(d.children,function(b,j){b.classList.toggle("on",j===c);});}function mv(dir){var a=stops(),k=(near(a)+dir+a.length)%a.length;g.scrollTo({left:a[k],behavior:"smooth"});}g.addEventListener("scroll",function(){clearTimeout(g._t);g._t=setTimeout(mark,60);});addEventListener("resize",mark);w.querySelector(".pl-nav.prev").onclick=function(){mv(-1)};w.querySelector(".pl-nav.next").onclick=function(){mv(1)};d.onclick=function(e){if(e.target.dataset.i){var a=stops();g.scrollTo({left:a[+e.target.dataset.i],behavior:"smooth"});}};mark();})();</script>
 </body>
 </html>
