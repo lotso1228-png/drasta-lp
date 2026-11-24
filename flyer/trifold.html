@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><title>ドラスタ 三つ折り</title>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700;800;900&family=Noto+Sans+JP:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+@page{size:297mm 210mm;margin:0}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#ccc;font-family:'Noto Sans JP',sans-serif;color:#1a2b38}
+@media print{body{background:#fff}}
+/* 巻三つ折り：内側に折り込む面(左端/外面・右端/中面)を2mm狭く */
+.sh{width:297mm;height:210mm;margin:0 auto 6mm;background:#fff;display:flex;page-break-after:always;overflow:hidden}
+.pn{position:relative;height:100%;display:flex;flex-direction:column;padding:8mm 7mm;overflow:hidden}
+.w99{width:100mm}.w97{width:97mm}
+.pn+.pn{border-left:.2mm dashed #e3e9ef}
+@media print{.pn+.pn{border-left:0}}
+.tg{display:inline-block;align-self:flex-start;background:linear-gradient(90deg,#ffa31a,#ff6a00);color:#fff;font-weight:900;font-size:3.3mm;padding:1.1mm 4mm;border-radius:9mm}
+.h{font-family:'M PLUS Rounded 1c';font-weight:900;color:#0f5c9c;font-size:6.2mm;line-height:1.3;margin:3mm 0 4mm}
+.h em{font-style:normal;color:#ff6a00}
+.blue{background:linear-gradient(150deg,#0159d7 0%,#1f9fe0 60%,#5cc3f0 100%);color:#fff}
+.blue .h{color:#fff}
+.logo{display:flex;align-items:center;gap:2.5mm}
+.logo img{height:9mm}
+.logo b{font-family:'M PLUS Rounded 1c';font-weight:900;font-size:4.6mm;color:#0159d7}
+/* 表紙 */
+.cover{padding:0}
+.cover .lg{padding:7mm 7mm 0}
+.cover .ph{position:relative;margin:5mm 0 0;flex:1}
+.cover .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:66% 30%}
+.cover .ph::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,#fff 0,rgba(255,255,255,.8) 24%,rgba(255,255,255,.25) 40%,rgba(255,255,255,0) 50%)}
+.cover .ct{position:absolute;z-index:2;top:2mm;left:7mm;right:7mm}
+.cover h1{font-family:'M PLUS Rounded 1c';font-weight:900;font-size:11mm;line-height:1.22;color:#0f5c9c;margin-top:3.5mm;text-shadow:0 0 2.5mm #fff,0 0 1mm #fff}
+.cover h1 em{font-style:normal;color:#ff6a00}
+.cover .ld{font-size:3.4mm;font-weight:700;line-height:1.6;margin-top:3mm;text-shadow:0 0 2mm #fff,0 0 1mm #fff,0 0 .5mm #fff}
+.cover .bar{background:linear-gradient(120deg,#0159d7,#1f9fe0 60%,#5cc3f0);color:#fff;font-weight:900;font-size:3.6mm;text-align:center;padding:4mm 0;letter-spacing:.3mm}
+.cover .cp{position:absolute;z-index:2;left:5mm;right:5mm;bottom:5mm;background:rgba(255,255,255,.95);border-radius:3.5mm;padding:2.5mm 3mm 2mm;display:flex;flex-wrap:wrap;box-shadow:0 1mm 3mm rgba(1,89,215,.18)}
+.cover .cp>div{flex:1;text-align:center}
+.cover .cp>div+div{border-left:.3mm solid #d6e4f2}
+.cover .cp small{display:block;font-size:2.9mm;font-weight:900;color:#0159d7}
+.cover .cp .o small{color:#ff6a00}
+.cover .cp b{font-family:"M PLUS Rounded 1c";font-weight:900;font-size:6.6mm;line-height:1.15;color:#1a2b38}
+.cover .cp b i{font-style:normal;font-size:3mm}
+.cover .cp p{flex:0 0 100%;text-align:center;font-size:2.5mm;color:#557;margin-top:1mm}
+/* 料金 */
+.pc{border:.6mm solid #0159d7;border-radius:4mm;padding:3.5mm 4mm;text-align:center;margin-bottom:4mm}
+.pc.o{border-color:#ff6a00}
+.pc h3{font-size:4.3mm;font-weight:900;color:#0159d7}.pc.o h3{color:#ff6a00}
+.pc small{display:block;font-size:2.9mm;color:#557;margin-top:.6mm}
+.pc .n{font-family:'M PLUS Rounded 1c';font-weight:900;font-size:10.5mm;line-height:1.1;margin-top:1.5mm}
+.pc .n i{font-style:normal;font-size:4.4mm}.pc .n s{text-decoration:none;font-size:3.1mm;font-weight:700;color:#557;margin-left:.8mm}
+.note{font-size:2.7mm;color:#557;line-height:1.6}
+.ck{margin-top:4mm}
+.ck li{list-style:none;position:relative;padding-left:6mm;font-size:3.4mm;font-weight:700;margin:2mm 0}
+.ck li::before{content:"✓";position:absolute;left:0;top:.2mm;width:4.4mm;height:4.4mm;border-radius:50%;background:#5bbf4a;color:#fff;font-size:2.8mm;line-height:4.4mm;text-align:center}
+/* 特長 */
+.f{display:flex;gap:3mm;background:#eef6fd;border-radius:3.5mm;overflow:hidden;margin-bottom:3mm}
+.f img{width:30mm;height:27mm;object-fit:cover;flex:none}
+.f div{padding:2.5mm 3mm 2.5mm 0}
+.f h4{font-size:3.7mm;font-weight:900;color:#0f5c9c;line-height:1.35}
+.f p{font-size:2.85mm;line-height:1.55;margin-top:1mm;font-weight:500}
+/* 流れ */
+.st{display:flex;gap:3mm;align-items:flex-start;margin-bottom:3.2mm}
+.st b{flex:none;width:7mm;height:7mm;border-radius:50%;background:#1f9fe0;color:#fff;font-family:'M PLUS Rounded 1c';font-weight:900;font-size:3.8mm;line-height:7mm;text-align:center}
+.st:last-child b{background:#ff6a00}
+.st h4{font-size:3.6mm;font-weight:900;color:#0f5c9c}
+.st p{font-size:2.85mm;line-height:1.5;margin-top:.5mm}
+/* 写真ギャラリー */
+.gl{display:grid;grid-template-columns:1fr 1fr;gap:2mm;margin-top:auto}
+.gl img{width:100%;height:34mm;object-fit:cover;border-radius:2mm;display:block}
+/* LINE */
+.qr{background:#fff;border-radius:3mm;padding:2.5mm;width:38mm;margin:2mm auto 0}
+.qr img{width:100%;display:block}
+.ls{margin-top:5mm}
+.ls li{list-style:none;background:rgba(255,255,255,.16);border-radius:3mm;padding:2.5mm 3.5mm;margin-bottom:2mm;font-size:3mm;line-height:1.5}
+.ls li b{display:block;font-size:3.5mm}
+.url{display:inline-block;background:#fff;color:#0159d7;font-weight:900;font-size:3.6mm;padding:1mm 4mm;border-radius:9mm}
+.ctr{text-align:center}
+.info{margin-top:auto;font-size:3mm;line-height:1.7}
+.info b{color:#0159d7}
+.box{background:#eef6fd;border-radius:3.5mm;padding:3.5mm 4mm;margin-top:3mm}
+</style></head><body>
+
+<!-- 外面：［中に折り込む面｜裏表紙｜表紙］ -->
+<div class="sh">
+  <section class="pn w97">
+    <span class="tg">こんな方におすすめ</span>
+    <p class="h">はじめてでも、<br><em>自分のペースで。</em></p>
+    <ul class="ck" style="margin-top:2mm">
+      <li>大学生・専門学生</li><li>運転がはじめての方</li><li>関西で免許を取りたい方</li><li>教習所に通う時間がとれない方</li>
+    </ul>
+    <div class="box">
+      <p style="font-size:3.6mm;font-weight:900;color:#0f5c9c">一発試験とは？</p>
+      <p class="note" style="font-size:2.9mm;color:#1a2b38;margin-top:1mm">教習所を卒業せず、運転免許試験場で直接試験を受けて免許を取る方法です。ドラスタは必要な練習に絞ってサポートするので、ムダなく免許取得をめざせます。</p>
+    </div>
+    <div class="gl"><img src="../drastalp/assets/site/course-wide.jpg" alt=""><img src="../drastalp/assets/site/course-fumikiri.jpg" alt=""></div>
+  </section>
+
+  <section class="pn w100 w99">
+    <div class="logo"><img src="../drastalp/assets/drasta-logo.png" alt=""><b>ドラスタ自動車教習所</b></div>
+    <div class="box" style="margin-top:6mm">
+      <p class="note" style="font-size:3.2mm;color:#1a2b38;line-height:1.8">
+        <b style="color:#0159d7">対応エリア</b>　大阪・奈良<br>
+        <b style="color:#0159d7">取得できる免許</b>　普通AT免許<br>
+        <b style="color:#0159d7">受付時間</b>　9:00〜17:00（年中無休）<br>
+        <b style="color:#0159d7">送迎</b>　近鉄 大和八木駅から無料</p>
+    </div>
+    <div class="ctr" style="margin-top:6mm">
+      <p style="font-weight:900;color:#0f5c9c;font-size:3.8mm">ご相談・ご予約はLINEから</p>
+      <div class="qr" style="width:32mm;border:.4mm solid #e3e9ef"><img src="../drastalp/assets/line-qr.png" alt=""></div>
+      <p style="margin-top:3mm"><span class="url" style="background:#eef6fd">dorasuta-ds.com</span></p>
+    </div>
+    <div class="gl" style="margin-top:6mm"><img src="../drastalp/assets/site/course-cross.jpg" alt=""><img src="../drastalp/assets/photo-shuttle.jpg" alt=""></div>
+    <p class="note" style="margin-top:3mm">※料金・内容はチラシ作成時点のものです。最新情報はWebサイトまたはLINEでご確認ください。</p>
+  </section>
+
+  <section class="pn w99 cover">
+    <div class="lg logo"><img src="../drastalp/assets/drasta-logo.png" alt=""><b>ドラスタ自動車教習所</b></div>
+    <div class="ph"><img src="../drastalp/assets/photo-top.jpg" alt="">
+      <div class="ct"><span class="tg">一発試験で免許取得をサポート</span>
+        <h1>あなたの<br>ペースで<br><em>免許取得。</em></h1>
+        <p class="ld">予約も連絡も<b>LINEだけ</b>。<br>運転がはじめてでも<br>基礎から学べます。</p></div>
+      <div class="cp"><div><small>普通コース</small><b>231,000<i>円</i></b></div><div class="o"><small>経験者コース</small><b>165,000<i>円</i></b></div><p>税込｜試験手数料などは別途</p></div></div>
+    <div class="bar">大阪・奈良｜普通AT免許</div>
+  </section>
+</div>
+
+<!-- 中面：［特長｜料金｜流れ・LINE］ -->
+<div class="sh">
+  <section class="pn w99">
+    <span class="tg">ドラスタの特長</span>
+    <p class="h">通いやすさと<br><em>合格までのサポート</em></p>
+    <div class="f"><img src="../drastalp/assets/photo-shuttle.jpg" alt=""><div><h4>大和八木駅から<br>無料送迎</h4><p>練習場まで車で約10分。鶴橋から近鉄特急で乗換なし。</p></div></div>
+    <div class="f"><img src="../drastalp/assets/site/course-s.jpg" alt=""><div><h4>試験と同じ課題を<br>練習場で</h4><p>S字・クランク・踏切・交差点など、試験に出る課題がそろっています。</p></div></div>
+    <div class="f"><img src="../drastalp/assets/photo-hours.jpg" alt=""><div><h4>合格まで<br>しっかりサポート</h4><p>仮免前のコース練習から本免前の路上練習まで対応。</p></div></div>
+    <div class="f"><img src="../drastalp/assets/site/course-cars.jpg" alt=""><div><h4>予約・連絡は<br>LINEだけ</h4><p>授業やバイトのすき間に、自分の都合で通えます。</p></div></div>
+  </section>
+
+  <section class="pn w99">
+    <span class="tg">料金</span>
+    <p class="h">わかりやすい<br><em>コース料金</em></p>
+    <div class="pc"><h3>普通コース</h3><small>運転がはじめての方｜仮免15時間＋本免10時間</small><div class="n">231,000<i>円</i><s>（税込）</s></div></div>
+    <div class="pc o"><h3>経験者コース</h3><small>運転経験のある方｜仮免5時間＋本免10時間</small><div class="n">165,000<i>円</i><s>（税込）</s></div></div>
+    <p class="note">※試験手数料・取得時講習などは別途かかります。<br>※追加の練習が必要な場合は、事前に料金と時間数をご案内します。</p>
+    <ul class="ck"><li>分割払いOK</li><li>見積もり無料</li><li>相談だけでもOK・勧誘なし</li></ul>
+    <div class="gl"><img src="../drastalp/assets/site/course-s.jpg" alt="" style="grid-column:span 2;height:40mm"></div>
+  </section>
+
+  <section class="pn w97 blue">
+    <p class="h" style="margin-top:0">免許取得までの<br>流れ</p>
+    <div style="background:#fff;border-radius:3.5mm;padding:4mm 4mm 1mm;color:#1a2b38">
+      <div class="st"><b>1</b><div><h4>LINEでご相談・お申込み</h4></div></div>
+      <div class="st"><b>2</b><div><h4>仮免学科試験</h4><p>独自の問題集でしっかり対策</p></div></div>
+      <div class="st"><b>3</b><div><h4>仮免実技練習・試験</h4><p>コースで練習して仮免許取得</p></div></div>
+      <div class="st"><b>4</b><div><h4>本免学科試験</h4></div></div>
+      <div class="st"><b>5</b><div><h4>本免実技練習・試験</h4><p>路上練習で自信をつけて挑戦</p></div></div>
+      <div class="st"><b>6</b><div><h4>免許取得！</h4><p>取得時講習を受けて免許証を受け取り</p></div></div>
+    </div>
+    <div class="ctr" style="margin-top:auto">
+      <p style="font-family:'M PLUS Rounded 1c';font-weight:900;font-size:5.4mm">まずはLINEで無料相談</p>
+      <div class="qr" style="width:30mm"><img src="../drastalp/assets/line-qr.png" alt=""></div>
+    </div>
+  </section>
+</div>
+</body></html>
